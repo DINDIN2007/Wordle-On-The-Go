@@ -94,23 +94,21 @@ public class English extends AppCompatActivity {
     }
 
     public void enterPressed() {
-        String input_word = constructWord();
+        String input_word = constructWord().toUpperCase();
 
         // Check if current input is valid
         if (current_columns < 4) {
-            showDialog();
+            showDialog("There are not enough letters. Please enter a 5 letter word.");
             return;
         }
         if (!listContainsWord(input_word)) {
-            showDialog();
+            showDialog("The dictionnary does not contain this word. Please try again.");
             return;
         }
         if (wordHasBeenTried(input_word)) {
-            showDialog();
+            showDialog("The word has already been tried above ! Try something else...");
             return;
         }
-
-        input_word = input_word.toUpperCase();
 
         Log.d("CHEATER", "TRY : " + input_word);
 
@@ -126,6 +124,7 @@ public class English extends AppCompatActivity {
         }
         // Procede to next row
         else {
+            triedWords[current_row] = input_word;
             current_row++;
             current_columns = 0;
         }
@@ -145,9 +144,13 @@ public class English extends AppCompatActivity {
     ██║██║ ╚███║  ╚██╔╝  ██║  ██║███████╗██║██████╔╝      ╚██╔╝  ██║  ██║███████╗╚██████╔╝███████╗██████╔╝
     ╚═╝╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝╚═════╝        ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚════*/
 
-    public void showDialog() {
+    public void showDialog(String error) {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.not_enough_letters);
+
+        TextView message = (TextView)findViewById(R.id.alert);
+        message.setText(error);
+
         dialog.show();
     }
 

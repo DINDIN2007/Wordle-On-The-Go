@@ -15,32 +15,32 @@
     <!--English Page-->
     <string name="english_page_title">WORDLE</string>
     <!--Keyboard-->
-    <string name="K11">Q</string>
-    <string name="K12">W</string>
-    <string name="K13">E</string>
-    <string name="K14">R</string>
-    <string name="K15">T</string>
-    <string name="K16">Y</string>
-    <string name="K17">U</string>
-    <string name="K21">I</string>
-    <string name="K22">O</string>
-    <string name="K23">P</string>
-    <string name="K24">A</string>
-    <string name="K25">S</string>
-    <string name="K26">D</string>
-    <string name="K27">F</string>
-    <string name="K31">G</string>
-    <string name="K32">H</string>
-    <string name="K33">J</string>
-    <string name="K34">K</string>
-    <string name="K35">L</string>
-    <string name="K36">Z</string>
-    <string name="K37">X</string>
-    <string name="K41">🢂</string>
-    <string name="K42">C</string>
-    <string name="K43">V</string>
-    <string name="K44">B</string>
-    <string name="K45">N</string>
-    <string name="K46">M</string>
-    <string name="K47">⌫</string>
+    <string name="K11" translatable="false">Q</string>
+    <string name="K12" translatable="false">W</string>
+    <string name="K13" translatable="false">E</string>
+    <string name="K14" translatable="false">R</string>
+    <string name="K15" translatable="false">T</string>
+    <string name="K16" translatable="false">Y</string>
+    <string name="K17" translatable="false">U</string>
+    <string name="K21" translatable="false">I</string>
+    <string name="K22" translatable="false">O</string>
+    <string name="K23" translatable="false">P</string>
+    <string name="K24" translatable="false">A</string>
+    <string name="K25" translatable="false">S</string>
+    <string name="K26" translatable="false">D</string>
+    <string name="K27" translatable="false">F</string>
+    <string name="K31" translatable="false">G</string>
+    <string name="K32" translatable="false">H</string>
+    <string name="K33" translatable="false">J</string>
+    <string name="K34" translatable="false">K</string>
+    <string name="K35" translatable="false">L</string>
+    <string name="K36" translatable="false">Z</string>
+    <string name="K37" translatable="false">X</string>
+    <string name="K41" translatable="false">🢂</string>
+    <string name="K42" translatable="false">C</string>
+    <string name="K43" translatable="false">V</string>
+    <string name="K44" translatable="false">B</string>
+    <string name="K45" translatable="false">N</string>
+    <string name="K46" translatable="false">M</string>
+    <string name="K47" translatable="false">⌫</string>
 </resources>
