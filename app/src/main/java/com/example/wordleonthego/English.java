@@ -2,6 +2,7 @@ package com.example.wordleonthego;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -97,13 +98,15 @@ public class English extends AppCompatActivity {
 
         // Check if current input is valid
         if (current_columns < 4) {
-            //alert_popUp.setVisibility(View.VISIBLE);
+            showDialog();
             return;
         }
         if (!listContainsWord(input_word)) {
+            showDialog();
             return;
         }
         if (wordHasBeenTried(input_word)) {
+            showDialog();
             return;
         }
 
@@ -133,6 +136,19 @@ public class English extends AppCompatActivity {
         tile.setText("");
 
         if (current_columns != 0) current_columns--;
+    }
+    
+    /*╗███╗  ██╗██╗   ██╗ █████╗ ██╗     ██╗██████╗     ██╗   ██╗ █████╗ ██╗     ██╗   ██╗███████╗ ██████╗
+    ██║████╗ ██║██║   ██║██╔══██╗██║     ██║██╔══██╗    ██║   ██║██╔══██╗██║     ██║   ██║██╔════╝██╔════╝
+    ██║██╔██╗██║╚██╗ ██╔╝███████║██║     ██║██║  ██║    ╚██╗ ██╔╝███████║██║     ██║   ██║█████╗  ╚█████╗
+    ██║██║╚████║ ╚████╔╝ ██╔══██║██║     ██║██║  ██║     ╚████╔╝ ██╔══██║██║     ██║   ██║██╔══╝   ╚═══██╗
+    ██║██║ ╚███║  ╚██╔╝  ██║  ██║███████╗██║██████╔╝      ╚██╔╝  ██║  ██║███████╗╚██████╔╝███████╗██████╔╝
+    ╚═╝╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝╚═════╝        ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚════*/
+
+    public void showDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.not_enough_letters);
+        dialog.show();
     }
 
     /*████╗  █████╗  ██╗       ██╗   █████╗ ██╗  ██╗███████╗ █████╗ ██╗  ██╗
