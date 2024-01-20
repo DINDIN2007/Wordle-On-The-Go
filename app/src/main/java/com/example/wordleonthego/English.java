@@ -55,6 +55,8 @@ public class English extends AppCompatActivity {
             {R.id.Enter, R.id.C, R.id.V, R.id.B, R.id.N, R.id.M, R.id.Delete},
     };
 
+    final public static String keyboard_position = "QWERTYUIOPASDFGHJKLZX1CVBNM2";
+
     public void createKeyboard() {
         for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 7; j++) {
@@ -74,6 +76,7 @@ public class English extends AppCompatActivity {
                         default:
                             keyPressed(key);
                     }
+                    Log.d("CHEATER", String.valueOf(current_columns));
                 }
             });
         }}
@@ -94,14 +97,16 @@ public class English extends AppCompatActivity {
     }
 
     public void enterPressed() {
-        String input_word = constructWord().toUpperCase();
-
-        // Check if current input is valid
+        // Check if there are enough letters
         if (current_columns < 4) {
             showDialog("There are not enough letters. Please enter a 5 letter word.");
             return;
         }
-        if (!listContainsWord(input_word)) {
+
+        String input_word = constructWord().toUpperCase();
+
+        // Check if current word is valid
+        if (!listContainsWord(input_word.toLowerCase())) {
             showDialog("The dictionnary does not contain this word. Please try again.");
             return;
         }
@@ -148,7 +153,7 @@ public class English extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.not_enough_letters);
 
-        TextView message = (TextView)findViewById(R.id.alert);
+        TextView message = (TextView)(dialog.findViewById(R.id.alert));
         message.setText(error);
 
         dialog.show();
@@ -198,6 +203,10 @@ public class English extends AppCompatActivity {
                 tile.setTextColor(Color.WHITE);
                 // Add placeholder in char array
                 remaining_letters.append('-');
+                // Change matching key to green color
+                int keyPosition = keyboard_position.indexOf(input.charAt(i));
+                Button key = (Button)findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]);
+                key.setBackgroundResource(R.drawable.green_tile);
             }
             // Add remaining letters to check for yellow/gray tiles
             else remaining_letters.append(chosenWord.charAt(i));
