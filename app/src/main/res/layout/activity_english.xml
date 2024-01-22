@@ -805,4 +805,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/E13" />
 
+    <!--Go Back to Menupage-->
+
+    <Button
+        android:id="@+id/english_back_button"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/grey_tile"
+        android:text="⇱"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/E41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/E31" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

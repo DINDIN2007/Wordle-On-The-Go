@@ -3,6 +3,8 @@ package com.example.wordleonthego;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,6 +42,15 @@ public class English extends AppCompatActivity {
             {R.id.E51, R.id.E52, R.id.E53, R.id.E54, R.id.E55},
             {R.id.E61, R.id.E62, R.id.E63, R.id.E64, R.id.E65},
     };
+
+    public void createGrid() {
+        for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 5; j++) {
+            TextView grid_tile = (TextView) findViewById(grid_id[i][j]);
+            grid_tile.setText("");
+            grid_tile.setBackgroundResource(R.drawable.border);
+        }}
+    }
     
     /*╗  ██╗███████╗██╗   ██╗██████╗  █████╗  █████╗ ██████╗ ██████╗
     ██║ ██╔╝██╔════╝╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗
@@ -61,6 +72,7 @@ public class English extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 7; j++) {
             TextView key = (Button) findViewById(keyboard_id[i][j]);
+            key.setBackgroundResource(R.drawable.not_selected);
             key.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,7 +88,6 @@ public class English extends AppCompatActivity {
                         default:
                             keyPressed(key);
                     }
-                    Log.d("CHEATER", String.valueOf(current_columns));
                 }
             });
         }}
@@ -90,15 +101,15 @@ public class English extends AppCompatActivity {
     ╚═╝  ╚═╝╚══════╝   ╚═╝        ╚════╝  ╚════╝ ╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚════*/
     
     public void keyPressed(String key) {
+        if (current_columns == 5) return;
         TextView tile = (TextView) findViewById(grid_id[current_row][current_columns]);
         tile.setText(key);
-
-        if (current_columns != 4) current_columns++;
+        current_columns++;
     }
 
     public void enterPressed() {
         // Check if there are enough letters
-        if (current_columns < 4) {
+        if (current_columns < 5) {
             showDialog("There are not enough letters. Please enter a 5 letter word.");
             return;
         }
@@ -136,10 +147,9 @@ public class English extends AppCompatActivity {
     }
 
     public void deletePressed() {
+        current_columns = Math.max(0, current_columns - 1);
         TextView tile = (TextView) findViewById(grid_id[current_row][current_columns]);
         tile.setText("");
-
-        if (current_columns != 0) current_columns--;
     }
     
     /*╗███╗  ██╗██╗   ██╗ █████╗ ██╗     ██╗██████╗     ██╗   ██╗ █████╗ ██╗     ██╗   ██╗███████╗ ██████╗
@@ -239,12 +249,44 @@ public class English extends AppCompatActivity {
     ██████╔╝██║  ██║██║  ╚██╔╝  ███████╗██║  ██║  ╚█████╔╝╚█████╔╝██████╔╝███████╗
     ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚════╝  ╚════╝ ╚═════╝ ╚═════*/
 
+    public void newGame() {
+        // Create keyboard again
+        createKeyboard();
+
+        // Create grid again
+        current_columns = 0; current_row = 0;
+        createGrid();
+
+        // Chose new word
+        chosenWord = wordList[(int)(Math.random() * wordList.length)].toUpperCase();
+
+        // Log new word for debugging ;)
+        Log.d("CHEATER", chosenWord);
+    }
+
+    public static Intent makeIntent(Context context) {
+        return new Intent(context, English.class);
+    }
+
+    private void setupEndActivityButton() {
+        Button btn = (Button)findViewById(R.id.english_back_button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_english);
 
-        createKeyboard();
-        Log.d("CHEATER", chosenWord);
+        // Create option to go back to menu
+        setupEndActivityButton();
+
+        // Create new game
+        newGame();
     }
 }

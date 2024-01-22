@@ -21,7 +21,8 @@ public class Menu extends AppCompatActivity {
         english_Option.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent englishPage = new Intent(Menu.this, English.class);
+                // Intent englishPage = new Intent(Menu.this, English.class);
+                Intent englishPage = English.makeIntent(Menu.this);
                 startActivity(englishPage);
             }
         });
