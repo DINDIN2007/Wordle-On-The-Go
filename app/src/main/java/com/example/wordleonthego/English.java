@@ -107,7 +107,12 @@ public class English extends AppCompatActivity {
         current_columns++;
     }
 
+    public static boolean gameOver = false;
+
     public void enterPressed() {
+        // Don't run if game is over
+        if (gameOver) return;
+
         // Check if there are enough letters
         if (current_columns < 5) {
             showDialog("There are not enough letters. Please enter a 5 letter word.");
@@ -137,6 +142,8 @@ public class English extends AppCompatActivity {
         // No more tries left for player
         if (current_row == 5) {
             // Execute Ending Code
+            gameOver = true;
+            showDialog("GAME OVER, THE WORD WAS " + chosenWord);
         }
         // Procede to next row
         else {
@@ -165,6 +172,18 @@ public class English extends AppCompatActivity {
 
         TextView message = (TextView)(dialog.findViewById(R.id.alert));
         message.setText(error);
+
+        Button newGame = (Button)(dialog.findViewById(R.id.newGame));
+        if (gameOver) {
+            newGame.setVisibility(View.VISIBLE);
+            newGame.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    newGame();
+                }
+            });
+        }
+        else newGame.setVisibility(View.GONE);
 
         dialog.show();
     }
@@ -204,6 +223,7 @@ public class English extends AppCompatActivity {
 
     public String checkGreenTiles(String input) {
         StringBuilder remaining_letters = new StringBuilder();
+        int correctCounter = 0;
         for (int i = 0; i < input.length(); i++) {
             // Search for correct letters at correct position
             if (input.charAt(i) == chosenWord.charAt(i)) {
@@ -217,9 +237,15 @@ public class English extends AppCompatActivity {
                 int keyPosition = keyboard_position.indexOf(input.charAt(i));
                 Button key = (Button)findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]);
                 key.setBackgroundResource(R.drawable.green_tile);
+                // Add 1 to correctCounter
+                correctCounter++;
             }
             // Add remaining letters to check for yellow/gray tiles
             else remaining_letters.append(chosenWord.charAt(i));
+        }
+        if (correctCounter == chosenWord.length()) {
+            gameOver = true;
+            showDialog("\uD83C\uDF89 Congratulation \uD83C\uDF89\n You found the word");
         }
         return remaining_letters.toString();
     }
@@ -288,5 +314,6 @@ public class English extends AppCompatActivity {
 
         // Create new game
         newGame();
+        Log.d("CHEATER", "WORD : " + chosenWord);
     }
 }

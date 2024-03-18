@@ -9,5 +9,9 @@
     <string name="spanish_option">Espagne</string>
     <string name="japanese_option">Japon</string>
     <string name="vietnamese_option">Vietnam</string>
+    <string name="quadrupleWordle">Mode Difficile</string>
+
     <string name="english_page_title">WORDLE</string>
+    <string name="newGame">Nouvelle Partie</string>
+
 </resources>

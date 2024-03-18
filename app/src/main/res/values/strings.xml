@@ -11,9 +11,12 @@
     <string name="spanish_option">Spain</string>
     <string name="japanese_option">Japan</string>
     <string name="vietnamese_option">Vietnam</string>
+    <string name="quadrupleWordle">Hard Mode</string>
 
     <!--English Page-->
     <string name="english_page_title">WORDLE</string>
+    <string name="newGame">New Game</string>
+
     <!--Keyboard-->
     <string name="K11" translatable="false">Q</string>
     <string name="K12" translatable="false">W</string>
