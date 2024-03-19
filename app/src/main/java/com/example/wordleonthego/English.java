@@ -75,7 +75,6 @@ public class English extends AppCompatActivity {
         for (int j = 0; j < 7; j++) {
             TextView key = findViewById(keyboard_id[i][j]);
             key.setBackgroundResource(R.drawable.not_selected);
-            keyboard_color[i][j] = 0; // 0 = Not Selected, 1 = Not there, 2 = Yellow Tile, 3 = Green Tile
             key.setOnClickListener(v -> {
                 int key_id = v.getId();
                 String key1 = (getResources().getResourceEntryName(key_id));
@@ -90,6 +89,11 @@ public class English extends AppCompatActivity {
                         keyPressed(key1);
                 }
             });
+            // Change key-color
+            keyboard_color[i][j] = 0; // 0 = Not Selected, 1 = Not there, 2 = Yellow Tile, 3 = Green Tile
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !((i == 3 && j == 0) || (i == 3 && j == 6))) {
+                key.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(174,174,174)));
+            }
         }}
     }
     
@@ -123,7 +127,7 @@ public class English extends AppCompatActivity {
 
         // Check if current word is valid
         if (!listContainsWord(input_word.toLowerCase())) {
-            showDialog("The dictionnary does not contain this word. Please try again.");
+            showDialog("The dictionary does not contain this word. Please try again.");
             return;
         }
         if (wordHasBeenTried(input_word)) {
@@ -145,7 +149,7 @@ public class English extends AppCompatActivity {
             gameOver = true;
             showDialog("GAME OVER, THE WORD WAS " + chosenWord);
         }
-        // Procede to next row
+        // Proceed to next row
         else {
             triedWords[current_row] = input_word;
             current_row++;
@@ -227,7 +231,7 @@ public class English extends AppCompatActivity {
                 tile.setBackgroundResource(R.drawable.green_tile);
                 tile.setTextColor(Color.WHITE);
                 // Add placeholder in char array
-                remaining_letters.append('-');
+                remaining_letters.append("*");
                 // Add 1 to correctCounter
                 correctCounter++;
                 // Change matching key to green color
@@ -247,11 +251,15 @@ public class English extends AppCompatActivity {
         return remaining_letters.toString();
     }
 
-    public void checkYellowTiles(String remainder, String input) {
+    public void checkYellowTiles(String lettersToCheck, String input) {
+        String remainder = lettersToCheck;
         for (int i = 0; i < remainder.length(); i++) {
-            if (remainder.charAt(i) == '-') continue;
-
+            // Find the current tile to change color
             TextView tile = findViewById(grid_id[current_row][i]);
+
+            if (remainder.charAt(i) == '*') continue;
+
+            // Detects a correct letter at the wrong spot
             if (remainder.contains(String.valueOf(input.charAt(i)))) {
                 // Change tile to yellow tile
                 tile.setBackgroundResource(R.drawable.yellow_tile);
@@ -260,12 +268,13 @@ public class English extends AppCompatActivity {
                 // String.replaceFirst() is weird in Android Studio
                 for (int j = 0; j < remainder.length(); j++) {
                     if (remainder.charAt(j) == input.charAt(i)) {
-                        newString.append("-"); break;
+                        newString.append("-"); continue;
                     }
                     newString.append(remainder.charAt(j));
                 }
                 remainder = newString.toString();
 
+                // Change corresponding key with yellow tint
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     int keyPosition = keyboard_position.indexOf(input.charAt(i));
                     if (keyboard_color[keyPosition / 7][keyPosition % 7] != 3) {
@@ -274,10 +283,12 @@ public class English extends AppCompatActivity {
                     }
                 }
             }
+            // Detects a letter that is not present in the word
             else {
                 // Change tile to gray tile
                 tile.setBackgroundResource(R.drawable.grey_tile);
 
+                // Change corresponding key with gray tint
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     int keyPosition = keyboard_position.indexOf(input.charAt(i));
                     if (keyboard_color[keyPosition / 7][keyPosition % 7] <= 1) {
@@ -288,6 +299,7 @@ public class English extends AppCompatActivity {
             }
             tile.setTextColor(Color.WHITE);
         }
+        Log.d("CHEATER", "REMAINING : " + remainder);
     }
 
     /*████╗ ██████╗ ██╗██╗   ██╗███████╗██████╗    █████╗  █████╗ ██████╗ ███████╗
@@ -307,6 +319,9 @@ public class English extends AppCompatActivity {
 
         // Chose new word
         chosenWord = wordList[(int)(Math.random() * wordList.length)].toUpperCase();
+
+        // Resets gameOver boolean
+        gameOver = false;
 
         // Log new word for debugging ;)
         Log.d("CHEATER", chosenWord);
