@@ -13,5 +13,6 @@
 
     <string name="english_page_title">WORDLE</string>
     <string name="newGame">Nouvelle Partie</string>
+    <string name="K41">Essayer</string>
 
 </resources>
