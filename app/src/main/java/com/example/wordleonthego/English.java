@@ -13,8 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import java.io.*;
-import java.util.*;
 
 public class English extends AppCompatActivity {
     /*╗       ██╗ █████╗ ██████╗ ██████╗   ██╗     ██╗ ██████╗████████╗
@@ -48,7 +46,7 @@ public class English extends AppCompatActivity {
     public void createGrid() {
         for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 5; j++) {
-            TextView grid_tile = (TextView) findViewById(grid_id[i][j]);
+            TextView grid_tile = findViewById(grid_id[i][j]);
             grid_tile.setText("");
             grid_tile.setBackgroundResource(R.drawable.border);
         }}
@@ -75,24 +73,21 @@ public class English extends AppCompatActivity {
     public void createKeyboard() {
         for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 7; j++) {
-            TextView key = (Button) findViewById(keyboard_id[i][j]);
+            TextView key = findViewById(keyboard_id[i][j]);
             key.setBackgroundResource(R.drawable.not_selected);
             keyboard_color[i][j] = 0; // 0 = Not Selected, 1 = Not there, 2 = Yellow Tile, 3 = Green Tile
-            key.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int key_id = v.getId();
-                    String key = (getResources().getResourceEntryName(key_id));
-                    switch (key) {
-                        case "Enter":
-                            enterPressed();
-                            break;
-                        case "Delete":
-                            deletePressed();
-                            break;
-                        default:
-                            keyPressed(key);
-                    }
+            key.setOnClickListener(v -> {
+                int key_id = v.getId();
+                String key1 = (getResources().getResourceEntryName(key_id));
+                switch (key1) {
+                    case "Enter":
+                        enterPressed();
+                        break;
+                    case "Delete":
+                        deletePressed();
+                        break;
+                    default:
+                        keyPressed(key1);
                 }
             });
         }}
@@ -107,7 +102,7 @@ public class English extends AppCompatActivity {
     
     public void keyPressed(String key) {
         if (current_columns == 5) return;
-        TextView tile = (TextView) findViewById(grid_id[current_row][current_columns]);
+        TextView tile = findViewById(grid_id[current_row][current_columns]);
         tile.setText(key);
         current_columns++;
     }
@@ -160,7 +155,7 @@ public class English extends AppCompatActivity {
 
     public void deletePressed() {
         current_columns = Math.max(0, current_columns - 1);
-        TextView tile = (TextView) findViewById(grid_id[current_row][current_columns]);
+        TextView tile = findViewById(grid_id[current_row][current_columns]);
         tile.setText("");
     }
     
@@ -175,18 +170,13 @@ public class English extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.not_enough_letters);
 
-        TextView message = (TextView)(dialog.findViewById(R.id.alert));
+        TextView message = (dialog.findViewById(R.id.alert));
         message.setText(error);
 
-        Button newGame = (Button)(dialog.findViewById(R.id.newGame));
+        Button newGame = dialog.findViewById(R.id.newGame);
         if (gameOver) {
             newGame.setVisibility(View.VISIBLE);
-            newGame.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    newGame();
-                }
-            });
+            newGame.setOnClickListener(v -> newGame());
         }
         else newGame.setVisibility(View.GONE);
 
@@ -203,7 +193,7 @@ public class English extends AppCompatActivity {
     public String constructWord() {
         StringBuilder input_word_finder = new StringBuilder();
         for (int i = 0; i < 5; i++) {
-            TextView tile = (TextView) findViewById(grid_id[current_row][i]);
+            TextView tile = findViewById(grid_id[current_row][i]);
             char letter = tile.getText().charAt(0);
             input_word_finder.append(letter);
         }
@@ -211,7 +201,7 @@ public class English extends AppCompatActivity {
     }
 
     public boolean listContainsWord(String word) {
-        int firstLetter = (int)(word.charAt(0));
+        int firstLetter = word.charAt(0);
         for (String s : wordList) {
             if (s.equals(word)) return true;
             if (firstLetter < (int) (s.charAt(0))) return false;
@@ -233,7 +223,7 @@ public class English extends AppCompatActivity {
             // Search for correct letters at correct position
             if (input.charAt(i) == chosenWord.charAt(i)) {
                 // Change tile into green tile
-                TextView tile = (TextView)findViewById(grid_id[current_row][i]);
+                TextView tile = findViewById(grid_id[current_row][i]);
                 tile.setBackgroundResource(R.drawable.green_tile);
                 tile.setTextColor(Color.WHITE);
                 // Add placeholder in char array
@@ -243,9 +233,9 @@ public class English extends AppCompatActivity {
                 // Change matching key to green color
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     int keyPosition = keyboard_position.indexOf(input.charAt(i));
-                    ((Button)findViewById(keyboard_id[keyPosition / 7][keyPosition % 7])).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(76, 175, 80)));
+                    findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(76, 175, 80)));
                     keyboard_color[keyPosition / 7][keyPosition % 7] = 3;
-                };
+                }
             }
             // Add remaining letters to check for yellow/gray tiles
             else remaining_letters.append(chosenWord.charAt(i));
@@ -261,18 +251,28 @@ public class English extends AppCompatActivity {
         for (int i = 0; i < remainder.length(); i++) {
             if (remainder.charAt(i) == '-') continue;
 
-            TextView tile = (TextView)findViewById(grid_id[current_row][i]);
+            TextView tile = findViewById(grid_id[current_row][i]);
             if (remainder.contains(String.valueOf(input.charAt(i)))) {
                 // Change tile to yellow tile
                 tile.setBackgroundResource(R.drawable.yellow_tile);
-                remainder.replaceFirst(String.valueOf(input.charAt(i)), "-");
+
+                StringBuilder newString = new StringBuilder();
+                // String.replaceFirst() is weird in Android Studio
+                for (int j = 0; j < remainder.length(); j++) {
+                    if (remainder.charAt(j) == input.charAt(i)) {
+                        newString.append("-"); break;
+                    }
+                    newString.append(remainder.charAt(j));
+                }
+                remainder = newString.toString();
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     int keyPosition = keyboard_position.indexOf(input.charAt(i));
-                    if (keyboard_color[keyPosition / 7][keyPosition % 7] == 3) return;
-                    ((Button)findViewById(keyboard_id[keyPosition / 7][keyPosition % 7])).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 193, 7)));
-                    keyboard_color[keyPosition / 7][keyPosition % 7] = 2;
-                };
+                    if (keyboard_color[keyPosition / 7][keyPosition % 7] != 3) {
+                        findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 193, 7)));
+                        keyboard_color[keyPosition / 7][keyPosition % 7] = 2;
+                    }
+                }
             }
             else {
                 // Change tile to gray tile
@@ -280,10 +280,11 @@ public class English extends AppCompatActivity {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     int keyPosition = keyboard_position.indexOf(input.charAt(i));
-                    if (keyboard_color[keyPosition / 7][keyPosition % 7] > 1) return;
-                    ((Button)findViewById(keyboard_id[keyPosition / 7][keyPosition % 7])).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(43, 40, 40)));
-                    keyboard_color[keyPosition / 7][keyPosition % 7] = 2;
-                };
+                    if (keyboard_color[keyPosition / 7][keyPosition % 7] <= 1) {
+                        findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(43, 40, 40)));
+                        keyboard_color[keyPosition / 7][keyPosition % 7] = 2;
+                    }
+                }
             }
             tile.setTextColor(Color.WHITE);
         }
@@ -316,14 +317,13 @@ public class English extends AppCompatActivity {
     }
 
     private void setupEndActivityButton() {
-        Button btn = (Button)findViewById(R.id.english_back_button);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newGame(); finish();
-            }
+        Button btn = findViewById(R.id.english_back_button);
+        btn.setOnClickListener(v -> {
+            newGame(); finish();
         });
     }
+
+    // When page is initially created
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -335,6 +335,6 @@ public class English extends AppCompatActivity {
 
         // Create new game
         newGame();
-        Log.d("CHEATER", "WORD : " + chosenWord);
+        Log.d("CHEATER", "WORD : " + chosenWord + wordList.length);
     }
 }
