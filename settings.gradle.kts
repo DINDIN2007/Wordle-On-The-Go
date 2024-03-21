@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Wordle on the Go"
 include(":app")
- 
