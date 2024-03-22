@@ -13,5 +13,7 @@
     <string name="homepage">ホームページ</string>
 
     <string name="newGame">ニューゲーム!</string>
+    <string name="K41">入る</string>
+    <string name="rules">ルール</string>
 
 </resources>

@@ -115,7 +115,7 @@ public class English extends AppCompatActivity {
 
     public void enterPressed() {
         // Don't run if game is over
-        if (gameOver) return;
+        if (gameOver) {newGame(); return;}
 
         // Check if there are enough letters
         if (current_columns < 5) {
@@ -299,7 +299,6 @@ public class English extends AppCompatActivity {
             }
             tile.setTextColor(Color.WHITE);
         }
-        Log.d("CHEATER", "REMAINING : " + remainder);
     }
 
     /*████╗ ██████╗ ██╗██╗   ██╗███████╗██████╗    █████╗  █████╗ ██████╗ ███████╗
@@ -322,6 +321,9 @@ public class English extends AppCompatActivity {
 
         // Resets gameOver boolean
         gameOver = false;
+
+        // Resets tried words
+        for (String word : triedWords) word = "";
 
         // Log new word for debugging ;)
         Log.d("CHEATER", chosenWord);
@@ -350,6 +352,5 @@ public class English extends AppCompatActivity {
 
         // Create new game
         newGame();
-        Log.d("CHEATER", "WORD : " + chosenWord + wordList.length);
     }
 }
