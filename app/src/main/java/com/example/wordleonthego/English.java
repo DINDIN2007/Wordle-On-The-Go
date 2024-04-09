@@ -144,7 +144,7 @@ public class English extends AppCompatActivity {
         checkYellowTiles(letters_remaining, input_word);
 
         // No more tries left for player
-        if (current_row == 5) {
+        if (current_row == 5 && !gameOver) {
             // Execute Ending Code
             gameOver = true;
             showDialog("GAME OVER, THE WORD WAS " + chosenWord);
@@ -177,12 +177,12 @@ public class English extends AppCompatActivity {
         TextView message = (dialog.findViewById(R.id.alert));
         message.setText(error);
 
-        Button newGame = dialog.findViewById(R.id.newGame);
+        Button newGameButton = dialog.findViewById(R.id.newGame);
         if (gameOver) {
-            newGame.setVisibility(View.VISIBLE);
-            newGame.setOnClickListener(v -> newGame());
+            newGameButton.setVisibility(View.VISIBLE);
+            newGameButton.setOnClickListener(v -> newGame());
         }
-        else newGame.setVisibility(View.GONE);
+        else newGameButton.setVisibility(View.GONE);
 
         dialog.show();
     }
@@ -245,8 +245,8 @@ public class English extends AppCompatActivity {
             else remaining_letters.append(chosenWord.charAt(i));
         }
         if (correctCounter == chosenWord.length()) {
-            gameOver = true;
             showDialog("\uD83C\uDF89 Congratulation \uD83C\uDF89\n You found the word");
+            gameOver = true;
         }
         return remaining_letters.toString();
     }

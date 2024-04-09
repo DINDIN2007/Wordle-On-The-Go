@@ -23,6 +23,21 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class Japanese extends AppCompatActivity {
+
+    /*╗  ██╗ █████╗ ███╗  ██╗ █████╗      ██╗       ██╗██████╗ ██╗████████╗██╗███╗  ██╗ ██████╗
+    ██║ ██╔╝██╔══██╗████╗ ██║██╔══██╗     ██║  ██╗  ██║██╔══██╗██║╚══██╔══╝██║████╗ ██║██╔════╝
+    █████═╝ ███████║██╔██╗██║███████║     ╚██╗████╗██╔╝██████╔╝██║   ██║   ██║██╔██╗██║██║  ██╗
+    ██╔═██╗ ██╔══██║██║╚████║██╔══██║      ████╔═████║ ██╔══██╗██║   ██║   ██║██║╚████║██║  ╚██╗
+    ██║ ╚██╗██║  ██║██║ ╚███║██║  ██║      ╚██╔╝ ╚██╔╝ ██║  ██║██║   ██║   ██║██║ ╚███║╚██████╔╝
+    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝       ╚═╝   ╚═╝  ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝╚═╝  ╚══╝ ╚═════╝
+
+     ██████╗██╗   ██╗ ██████╗████████╗███████╗███╗   ███╗
+    ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║
+    ╚█████╗  ╚████╔╝ ╚█████╗    ██║   █████╗  ██╔████╔██║
+     ╚═══██╗  ╚██╔╝   ╚═══██╗   ██║   ██╔══╝  ██║╚██╔╝██║
+    ██████╔╝   ██║   ██████╔╝   ██║   ███████╗██║ ╚═╝ ██║
+    ╚═════╝    ╚═╝   ╚═════╝    ╚═╝   ╚══════╝╚═╝     ╚*/
+
     // EXPLANATION OF THE JAPANESE ALPHABET
     // Japanese is a language that has three official alphabets.
     // The first is Hiragana, which consists of 46 different syllables (its usually used as connecting particles)
@@ -34,19 +49,6 @@ public class Japanese extends AppCompatActivity {
     // Once the word is found or the game is over, the user will receive both the kanji version and its definition
     // Since the most common length of words in Japanese are 3 syllables, we will set this game to three boxes
 
-    /*╗  ██╗ █████╗ ███╗  ██╗ █████╗      ██╗       ██╗██████╗ ██╗████████╗██╗███╗  ██╗ ██████╗ 
-    ██║ ██╔╝██╔══██╗████╗ ██║██╔══██╗     ██║  ██╗  ██║██╔══██╗██║╚══██╔══╝██║████╗ ██║██╔════╝ 
-    █████═╝ ███████║██╔██╗██║███████║     ╚██╗████╗██╔╝██████╔╝██║   ██║   ██║██╔██╗██║██║  ██╗ 
-    ██╔═██╗ ██╔══██║██║╚████║██╔══██║      ████╔═████║ ██╔══██╗██║   ██║   ██║██║╚████║██║  ╚██╗
-    ██║ ╚██╗██║  ██║██║ ╚███║██║  ██║      ╚██╔╝ ╚██╔╝ ██║  ██║██║   ██║   ██║██║ ╚███║╚██████╔╝
-    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝       ╚═╝   ╚═╝  ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝╚═╝  ╚══╝ ╚═════╝ 
-
-     ██████╗██╗   ██╗ ██████╗████████╗███████╗███╗   ███╗
-    ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║
-    ╚█████╗  ╚████╔╝ ╚█████╗    ██║   █████╗  ██╔████╔██║
-     ╚═══██╗  ╚██╔╝   ╚═══██╗   ██║   ██╔══╝  ██║╚██╔╝██║
-    ██████╔╝   ██║   ██████╔╝   ██║   ███████╗██║ ╚═╝ ██║
-    ╚═════╝    ╚═╝   ╚═════╝    ╚═╝   ╚══════╝╚═╝     ╚*/
     private static final HashMap<String, String> hiraganaChart = new HashMap<String, String>() {{
         put("あ", "a"); put("a", "あ"); put("い", "i"); put("i", "い"); put("う", "u"); put("u", "う"); put("え", "e"); put("e", "え"); put("お", "o"); put("o", "お");
         put("か", "ka"); put("ka", "か"); put("き", "ki"); put("ki", "き"); put("く", "ku"); put("ku", "く"); put("け", "ke"); put("ke", "け"); put("こ", "ko"); put("ko", "こ");
@@ -61,7 +63,7 @@ public class Japanese extends AppCompatActivity {
 
         put("が", "ga"); put("ga", "が"); put("ぎ", "gi"); put("gi", "ぎ"); put("ぐ", "gu"); put("gu", "ぐ"); put("げ", "ge"); put("ge", "げ"); put("ご", "go"); put("go", "ご");
         put("ざ", "za"); put("za", "ざ"); put("じ", "zi"); put("zi", "じ"); put("ず", "zu"); put("zu", "ず"); put("ぜ", "ze"); put("ze", "ぜ"); put("ぞ", "zo"); put("zo", "ぞ");
-        put("だ", "da"); put("da", "だ"); put("ぢ", "di"); put("di", "ぢ"); put("づ", "du"); put("du", "づ"); put("で", "de"); put("de", "づ"); put("ど", "do"); put("do", "ど");
+        put("だ", "da"); put("da", "だ"); put("ぢ", "di"); put("di", "ぢ"); put("づ", "du"); put("du", "づ"); put("で", "de"); put("de", "で"); put("ど", "do"); put("do", "ど");
         put("ば", "ba"); put("ba", "ば"); put("び", "bi"); put("bi", "び"); put("ぶ", "bu"); put("bu", "ぶ"); put("べ", "be"); put("be", "べ"); put("ぼ", "bo"); put("bo", "ぼ");
         put("ぱ", "pa"); put("pa", "ぱ"); put("ぴ", "pi"); put("pi", "ぴ"); put("ぷ", "pu"); put("pu", "ぷ"); put("ぺ", "pe"); put("pe", "ぺ"); put("ぽ", "po"); put("po", "ぽ");
 
@@ -70,69 +72,56 @@ public class Japanese extends AppCompatActivity {
         put("きょ", "kyo"); put("kyo", "きょ"); put("しょ", "sho"); put("sho", "しょ"); put("ちょ", "cho"); put("cho", "ちょ"); put("にょ", "nyo"); put("nyo", "にょ"); put("ひょ", "hyo"); put("hyo", "ひょ"); put("みょ", "myo"); put("myo", "みょ"); put("りょ", "ryo"); put("ryo", "りょ"); put("ぎょ", "gyo"); put("gyo", "ぎょ"); put("じょ", "jyo"); put("jyo", "じょ"); put("ぢょ", "dyo"); put("dyo", "ぢょ"); put("びょ", "byo"); put("byo", "びょ"); put("ぴょ", "pyo"); put("pyo", "ぴょ");
     }};
 
+    // Japanese also has this weird system where adding small つ
+    // in front of another kana makes the consonant part sound longer.
+    // So っ(small tsu) + か (ka) = っか (kka)
+    private static void addSmallTsu() {
+        String neededConsonants = "kstnhmyrwgzdbp";
+        String neededVowels = "aeiou";
+        for (int i = 0; i < neededConsonants.length(); i++) {
+        for (int j = 0; j < neededVowels.length(); j++) {
+            String consonant = String.valueOf(neededConsonants.charAt(i));
+            String vowel = String.valueOf(neededVowels.charAt(j));
+            String secondKana = hiraganaChart.get(consonant + vowel);
+            hiraganaChart.put(consonant + consonant + vowel, "っ" + secondKana);
+        }}
+    }
+
     // This method converts romanji words up to 5 letters long to hiragana characters
     private static String convertWord(String romanji) {
-        String firstHalf, secondHalf;
-        switch (romanji.length()) {
-            case 1:
-                return (hiraganaChart.containsKey(romanji)) ? hiraganaChart.get(romanji) : romanji;
-            case 2:
-                if (hiraganaChart.containsKey(romanji)) return hiraganaChart.get(romanji);
-                firstHalf = hiraganaChart.get(String.valueOf(romanji.charAt(0)));
-                secondHalf = hiraganaChart.get(String.valueOf(romanji.charAt(1)));
-                if (hiraganaChart.containsKey(firstHalf) && hiraganaChart.containsKey(secondHalf)) {
-                    return firstHalf + secondHalf;
-                }
-                return romanji;
-            case 3:
-                if (hiraganaChart.containsKey(romanji)) return hiraganaChart.get(romanji);
-                firstHalf = String.valueOf(romanji.charAt(0));
-                secondHalf = romanji.substring(1, 3);
-                if (hiraganaChart.containsKey(firstHalf) && !convertWord(secondHalf).equals(secondHalf)) {
-                    return hiraganaChart.get(firstHalf) + convertWord(secondHalf);
-                }
-                firstHalf = romanji.substring(0, 2);
-                secondHalf = String.valueOf(romanji.charAt(2));
-                if (hiraganaChart.containsKey(secondHalf) && !convertWord(firstHalf).equals(firstHalf)) {
-                    return convertWord(firstHalf) + hiraganaChart.get(secondHalf);
-                }
-                return romanji;
-            case 4:
-                firstHalf = romanji.substring(0, 3);
-                secondHalf = String.valueOf(romanji.charAt(3));
-                if (!convertWord(firstHalf).equals(firstHalf) && hiraganaChart.containsKey(secondHalf)) {
-                    return convertWord(firstHalf) + hiraganaChart.get(secondHalf);
-                }
-                firstHalf = romanji.substring(1, 4);
-                secondHalf = String.valueOf(romanji.charAt(0));
-                if (!convertWord(firstHalf).equals(firstHalf) && hiraganaChart.containsKey(secondHalf)) {
-                    return hiraganaChart.get(secondHalf) + convertWord(firstHalf);
-                }
-                firstHalf = romanji.substring(0, 2);
-                secondHalf = romanji.substring(2, 4);
-                if (!convertWord(firstHalf).equals(firstHalf) && !convertWord(secondHalf).equals(secondHalf)) {
-                    return convertWord(firstHalf) + convertWord(secondHalf);
-                }
-                return romanji;
-            case 5:
-                firstHalf = romanji.substring(0, 4);
-                secondHalf = String.valueOf(romanji.charAt(4));
-                if (!convertWord(firstHalf).equals(firstHalf) && hiraganaChart.containsKey(secondHalf)) {
-                    return convertWord(firstHalf) + hiraganaChart.get(secondHalf);
-                }
-                firstHalf = romanji.substring(0, 3);
-                secondHalf = romanji.substring(3, 5);
-                if (!convertWord(firstHalf).equals(firstHalf) && !convertWord(secondHalf).equals(secondHalf)) {
-                    return convertWord(firstHalf) + convertWord(secondHalf);
-                }
-                firstHalf = romanji.substring(0, 2);
-                secondHalf = romanji.substring(2, 5);
-                if (!convertWord(firstHalf).equals(firstHalf) && !convertWord(secondHalf).equals(secondHalf)) {
-                    return convertWord(firstHalf) + convertWord(secondHalf);
-                }
+        if (hiraganaChart.containsKey(romanji)) return hiraganaChart.get(romanji);
+
+        StringBuilder kanaVersion = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            String currentScan = romanji.substring(0, i + 1);
+            if (hiraganaChart.containsKey(currentScan)) {
+                kanaVersion.append(hiraganaChart.get(currentScan));
+                kanaVersion.append(convertWord(romanji.substring(i + 1)));
+                break;
+            }
         }
 
-        return convertWord(romanji.substring(0, romanji.length() - 1)) + romanji.charAt(romanji.length() - 1);
+        return kanaVersion.toString();
+    }
+
+    private static String convertBack(String kana) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < Math.min(kana.length(), 3); i++) {
+            String currentSearch = String.valueOf(kana.charAt(i));
+            if (i < 2) {
+                switch (kana.charAt(i + 1)) {
+                    case 'ゃ': case 'ゅ': case 'ょ':
+                        currentSearch += kana.charAt(i + 1); i++;
+                }
+                if (kana.charAt(i) == 'っ') {
+                    currentSearch += kana.charAt(i + 1); i++;
+                }
+            }
+            if (!hiraganaChart.containsKey(currentSearch)) return "error";
+            result.append(hiraganaChart.get(currentSearch));
+        }
+        return result.toString();
     }
 
     /*█████╗ ██████╗ ██╗██████╗   ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗ ██████╗
@@ -142,23 +131,24 @@ public class Japanese extends AppCompatActivity {
     ╚██████╔╝██║  ██║██║██████╔╝    ╚██╔╝  ██║  ██║██║  ██║██║██║  ██║██████╦╝███████╗███████╗██████╔╝
      ╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝      ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚════*/
 
-    public static String[] triedWords = {"", "", "", "", "", "", ""};
-    public static String chosenWord;
-    public static int current_row = 0, current_columns = 0;
+    private static String[] triedWords = {"", "", "", "", "", "", ""};
+    private static String chosenWord, kanaWord = "!";
+    private static int current_row = 0, current_columns = 0, start_column = 1, end_column = 3;
     final public static int[][] grid_id = {
-            {R.id.E12, R.id.E13, R.id.E14},
-            {R.id.E22, R.id.E23, R.id.E24},
-            {R.id.E32, R.id.E33, R.id.E34},
-            {R.id.E42, R.id.E43, R.id.E44},
-            {R.id.E52, R.id.E53, R.id.E54},
-            {R.id.E62, R.id.E63, R.id.E64},
+            {R.id.E11, R.id.E12, R.id.E13, R.id.E14, R.id.E15},
+            {R.id.E21, R.id.E22, R.id.E23, R.id.E24, R.id.E25},
+            {R.id.E31, R.id.E32, R.id.E33, R.id.E34, R.id.E35},
+            {R.id.E41, R.id.E42, R.id.E43, R.id.E44, R.id.E45},
+            {R.id.E51, R.id.E52, R.id.E53, R.id.E54, R.id.E55},
+            {R.id.E61, R.id.E62, R.id.E63, R.id.E64, R.id.E65},
     };
 
     public void createGrid() {
         for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 5; j++) {
                 TextView grid_tile = findViewById(grid_id[i][j]);
                 grid_tile.setText("");
+                grid_tile.setTextColor(getResources().getColor(R.color.black));
                 grid_tile.setBackgroundResource(R.drawable.border);
             }}
     }
@@ -177,9 +167,7 @@ public class Japanese extends AppCompatActivity {
             {R.id.Enter, R.id.C, R.id.V, R.id.B, R.id.N, R.id.M, R.id.Delete},
     };
 
-    final public static int[][] keyboard_color = new int[4][7];
-
-    final public static String keyboard_position = "QWERTYUIOPASDFGHJKLZX1CVBNM2";
+    // final public static String keyboard_position = "QWERTYUIOPASDFGHJKLZX1CVBNM2";
 
     public void createKeyboard() {
         for (int i = 0; i < 4; i++) {
@@ -200,11 +188,6 @@ public class Japanese extends AppCompatActivity {
                             keyPressed(key1);
                     }
                 });
-                // Change key-color
-                keyboard_color[i][j] = 0; // 0 = Not Selected, 1 = Not there, 2 = Yellow Tile, 3 = Green Tile
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !((i == 3 && j == 0) || (i == 3 && j == 6))) {
-                    key.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(174,174,174)));
-                }
             }}
     }
 
@@ -216,10 +199,33 @@ public class Japanese extends AppCompatActivity {
     ╚═╝  ╚═╝╚══════╝   ╚═╝        ╚════╝  ╚════╝ ╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚════*/
 
     public void keyPressed(String key) {
-        if (current_columns == 5) return;
+        if (current_columns >= 3) {current_columns = 3; return;}
         TextView tile = findViewById(grid_id[current_row][current_columns]);
-        tile.setText(key);
-        current_columns++;
+        String currentTextInRow = (tile.getText().toString() + key).toLowerCase();
+
+        if ((currentTextInRow + key).contains("nn")) {
+            tile.setText(hiraganaChart.get("n"));
+            current_columns++;
+            return;
+        }
+
+        if (hiraganaChart.containsKey(currentTextInRow) && !key.equalsIgnoreCase("n")) {
+            String kana = hiraganaChart.get(currentTextInRow);
+            assert kana != null;
+            if (kana.length() > 1) {
+                tile.setText(String.valueOf(kana.charAt(0)));
+                current_columns++;
+                tile = findViewById(grid_id[current_row][current_columns]);
+                tile.setText(String.valueOf(kana.charAt(1)));
+            }
+            else {
+                tile.setText(hiraganaChart.get(currentTextInRow));
+            }
+            current_columns++;
+        }
+        else {
+            tile.setText(currentTextInRow.toUpperCase());
+        }
     }
 
     public static boolean gameOver = false;
@@ -229,15 +235,20 @@ public class Japanese extends AppCompatActivity {
         if (gameOver) {newGame(); return;}
 
         // Check if there are enough letters
-        if (current_columns < 3) {
+        if (current_columns < end_column) {
             showDialog("There are not enough letters. Please enter a 5 letter word.");
             return;
         }
 
-        String input_word = constructWord().toUpperCase();
+        String input_word = constructWord();
+        String kanaVersion = convertBack(input_word);
 
         // Check if current word is valid
-        if (!listContainsWord(input_word.toLowerCase())) {
+        if (kanaVersion.equals("error")) {
+            showDialog("The word is not formatted correctly. Please try again");
+            return;
+        }
+        if (!wordList.contains(kanaVersion)) {
             showDialog("The dictionary does not contain this word. Please try again.");
             return;
         }
@@ -246,32 +257,36 @@ public class Japanese extends AppCompatActivity {
             return;
         }
 
-        // Log.d("CHEATER", "TRY : " + input_word);
-
         // Check Green Tiles
-        //String letters_remaining = checkGreenTiles(input_word);
+        String letters_remaining = checkGreenTiles(input_word);
 
         // Check Yellow Tiles
-        //checkYellowTiles(letters_remaining, input_word);
+        checkYellowTiles(letters_remaining, input_word);
 
         // No more tries left for player
-        if (current_row == 3) {
-            // Execute Ending Code
-            gameOver = true;
-            showDialog("GAME OVER, THE WORD WAS " + chosenWord);
+        if (current_row == 6 && !gameOver) {
+            // Execute Ending Code            gameOver = true;
+            showDialog("GAME OVER, THE WORD WAS " + input_word);
         }
         // Proceed to next row
         else {
             triedWords[current_row] = input_word;
             current_row++;
-            current_columns = 0;
+            current_columns = start_column;
         }
     }
 
     public void deletePressed() {
-        current_columns = Math.max(0, current_columns - 1);
         TextView tile = findViewById(grid_id[current_row][current_columns]);
-        tile.setText("");
+        String currentLetters = tile.getText().toString();
+        if (currentLetters.length() > 1) {
+            tile.setText(currentLetters.substring(0, currentLetters.length() - 1));
+        }
+        else {
+            if (currentLetters.length() != 1) current_columns = Math.max(start_column, current_columns - 1);
+            tile = findViewById(grid_id[current_row][current_columns]);
+            tile.setText("");
+        }
     }
 
     /*████╗  █████╗  ██╗       ██╗   █████╗ ██╗  ██╗███████╗ █████╗ ██╗  ██╗
@@ -281,23 +296,14 @@ public class Japanese extends AppCompatActivity {
     ██║  ██║╚█████╔╝  ╚██╔╝ ╚██╔╝   ╚█████╔╝██║  ██║███████╗╚█████╔╝██║ ╚██╗
     ╚═╝  ╚═╝ ╚════╝    ╚═╝   ╚═╝     ╚════╝ ╚═╝  ╚═╝╚══════╝ ╚════╝ ╚═╝  ╚*/
 
-    public String constructWord() {
+    private String constructWord() {
         StringBuilder input_word_finder = new StringBuilder();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < kanaWord.length(); i++) {
             TextView tile = findViewById(grid_id[current_row][i]);
             char letter = tile.getText().charAt(0);
             input_word_finder.append(letter);
         }
         return input_word_finder.toString().toLowerCase();
-    }
-
-    public boolean listContainsWord(String word) {
-        int firstLetter = word.charAt(0);
-        for (String s : wordList) {
-            if (s.equals(word)) return true;
-            if (firstLetter < (int) (s.charAt(0))) return false;
-        }
-        return false;
     }
 
     public boolean wordHasBeenTried(String word) {
@@ -310,9 +316,10 @@ public class Japanese extends AppCompatActivity {
     public String checkGreenTiles(String input) {
         StringBuilder remaining_letters = new StringBuilder();
         int correctCounter = 0;
+        Log.d("CHEATER", "WORD = " + input + " " + kanaWord);
         for (int i = 0; i < input.length(); i++) {
             // Search for correct letters at correct position
-            if (input.charAt(i) == chosenWord.charAt(i)) {
+            if (input.charAt(i) == kanaWord.charAt(i)) {
                 // Change tile into green tile
                 TextView tile = findViewById(grid_id[current_row][i]);
                 tile.setBackgroundResource(R.drawable.green_tile);
@@ -321,17 +328,11 @@ public class Japanese extends AppCompatActivity {
                 remaining_letters.append("*");
                 // Add 1 to correctCounter
                 correctCounter++;
-                // Change matching key to green color
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    int keyPosition = keyboard_position.indexOf(input.charAt(i));
-                    findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(76, 175, 80)));
-                    keyboard_color[keyPosition / 7][keyPosition % 7] = 3;
-                }
             }
             // Add remaining letters to check for yellow/gray tiles
-            else remaining_letters.append(chosenWord.charAt(i));
+            else remaining_letters.append(kanaWord.charAt(i));
         }
-        if (correctCounter == chosenWord.length()) {
+        if (correctCounter == kanaWord.length()) {
             gameOver = true;
             showDialog("\uD83C\uDF89 Congratulation \uD83C\uDF89\n You found the word");
         }
@@ -360,29 +361,11 @@ public class Japanese extends AppCompatActivity {
                     newString.append(remainder.charAt(j));
                 }
                 remainder = newString.toString();
-
-                // Change corresponding key with yellow tint
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    int keyPosition = keyboard_position.indexOf(input.charAt(i));
-                    if (keyboard_color[keyPosition / 7][keyPosition % 7] != 3) {
-                        findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 193, 7)));
-                        keyboard_color[keyPosition / 7][keyPosition % 7] = 2;
-                    }
-                }
             }
             // Detects a letter that is not present in the word
             else {
                 // Change tile to gray tile
                 tile.setBackgroundResource(R.drawable.grey_tile);
-
-                // Change corresponding key with gray tint
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    int keyPosition = keyboard_position.indexOf(input.charAt(i));
-                    if (keyboard_color[keyPosition / 7][keyPosition % 7] <= 1) {
-                        findViewById(keyboard_id[keyPosition / 7][keyPosition % 7]).setBackgroundTintList(ColorStateList.valueOf(Color.rgb(43, 40, 40)));
-                        keyboard_color[keyPosition / 7][keyPosition % 7] = 2;
-                    }
-                }
             }
             tile.setTextColor(Color.WHITE);
         }
@@ -427,13 +410,18 @@ public class Japanese extends AppCompatActivity {
         createGrid();
 
         // Chose new word
-        chosenWord = wordList.get((int)(Math.random() * wordList.size())).toUpperCase();
+        while (kanaWord.length() != 3) {
+            chosenWord = wordList.get((int)(Math.random() * wordList.size()));
+            kanaWord = convertWord(chosenWord);
+        }
 
         // Resets gameOver boolean
-        //gameOver = false;
+        gameOver = false;
 
         // Log new word for debugging ;)
-        Log.d("CHEATER", chosenWord);
+        Log.d("CHEATER", "CHOSEN WORD : " + chosenWord);
+
+        for (int i = 0; i < 10; i++) Log.d("CHEATER", "GOOFY AAA " + i + " : " + wordList.get(i));
     }
     public static Intent makeIntent(Context context) {
         return new Intent(context, Japanese.class);
@@ -458,18 +446,24 @@ public class Japanese extends AppCompatActivity {
         // Load json file
         loadFiles();
 
+        // Start new Game
+        newGame();
+
+        // Add small tsu to hiragana chart
+        addSmallTsu();
+
         //createHiraganaChart();
-        Log.d("CHEATER", "Test Word 1 : " + convertWord("jyaki"));
+        Log.d("CHEATER", "CHOSEN WORD : " + convertWord("akita"));
     }
 
     private static Vector<String> wordList = new Vector<>();
 
     private void loadFiles() {
+        String line;
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.words);
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
             while ((line = reader.readLine()) != null) {
                 wordList.add(line);
             }
@@ -479,4 +473,18 @@ public class Japanese extends AppCompatActivity {
             Log.d("CHEATER", "ERROR : " + e);
         }
     }
+
+    /*█╗       ██╗ █████╗ ███╗  ██╗██╗  ██╗  ██╗ █████╗ ███╗  ██╗██╗  ██████╗ ██╗ █████╗ ████████╗██╗ █████╗ ███╗  ██╗███╗  ██╗ █████╗ ██████╗ ██╗   ██╗
+     ██║  ██╗  ██║██╔══██╗████╗ ██║██║  ██║ ██╔╝██╔══██╗████╗ ██║██║  ██╔══██╗██║██╔══██╗╚══██╔══╝██║██╔══██╗████╗ ██║████╗ ██║██╔══██╗██╔══██╗╚██╗ ██╔╝
+     ╚██╗████╗██╔╝███████║██╔██╗██║██║  █████═╝ ███████║██╔██╗██║██║  ██║  ██║██║██║  ╚═╝   ██║   ██║██║  ██║██╔██╗██║██╔██╗██║███████║██████╔╝ ╚████╔╝
+      ████╔═████║ ██╔══██║██║╚████║██║  ██╔═██╗ ██╔══██║██║╚████║██║  ██║  ██║██║██║  ██╗   ██║   ██║██║  ██║██║╚████║██║╚████║██╔══██║██╔══██╗  ╚██╔╝
+      ╚██╔╝ ╚██╔╝ ██║  ██║██║ ╚███║██║  ██║ ╚██╗██║  ██║██║ ╚███║██║  ██████╔╝██║╚█████╔╝   ██║   ██║╚█████╔╝██║ ╚███║██║ ╚███║██║  ██║██║  ██║   ██║
+       ╚═╝   ╚═╝  ╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═════╝ ╚═╝ ╚════╝    ╚═╝   ╚═╝ ╚════╝ ╚═╝  ╚══╝╚═╝  ╚══╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚*/
+
+    /*
+    private static String[][] kanjiWords = {
+            {"上"},
+            {},
+    };
+    */
 }

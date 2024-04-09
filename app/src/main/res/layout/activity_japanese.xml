@@ -23,14 +23,30 @@
     <!--ROW 1-->
 
     <TextView
-        android:id="@+id/E12"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:id="@+id/E11"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/E12"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/page_title"
+        app:layout_constraintWidth="50dp" />
+
+    <TextView
+        android:id="@+id/E12"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/E13"
         app:layout_constraintHeight="50dp"
         app:layout_constraintTop_toBottomOf="@+id/page_title"
@@ -38,12 +54,13 @@
 
     <TextView
         android:id="@+id/E13"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight="50dp"
         app:layout_constraintHorizontal_bias="0.498"
@@ -53,28 +70,60 @@
 
     <TextView
         android:id="@+id/E14"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/E13"
         app:layout_constraintTop_toBottomOf="@+id/page_title"
         app:layout_constraintWidth="50dp" />
 
+    <TextView
+        android:id="@+id/E15"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/E14"
+        app:layout_constraintTop_toBottomOf="@+id/page_title"
+        app:layout_constraintWidth="50dp" />
+
     <!--Row 2-->
     <TextView
-        android:id="@+id/E22"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:id="@+id/E21"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/E22"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/E11"
+        app:layout_constraintWidth="50dp" />
+
+    <TextView
+        android:id="@+id/E22"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/E23"
         app:layout_constraintHeight="50dp"
         app:layout_constraintTop_toBottomOf="@+id/E12"
@@ -82,12 +131,13 @@
 
     <TextView
         android:id="@+id/E23"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight="50dp"
         app:layout_constraintHorizontal_bias="0.498"
@@ -97,28 +147,60 @@
 
     <TextView
         android:id="@+id/E24"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/E23"
         app:layout_constraintTop_toBottomOf="@+id/E14"
         app:layout_constraintWidth="50dp" />
 
+    <TextView
+        android:id="@+id/E25"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/E24"
+        app:layout_constraintTop_toBottomOf="@+id/E15"
+        app:layout_constraintWidth="50dp" />
+
     <!--Row 3-->
     <TextView
-        android:id="@+id/E32"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:id="@+id/E31"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/E32"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/E21"
+        app:layout_constraintWidth="50dp" />
+
+    <TextView
+        android:id="@+id/E32"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/E33"
         app:layout_constraintHeight="50dp"
         app:layout_constraintTop_toBottomOf="@+id/E22"
@@ -126,12 +208,13 @@
 
     <TextView
         android:id="@+id/E33"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight="50dp"
         app:layout_constraintHorizontal_bias="0.498"
@@ -141,28 +224,60 @@
 
     <TextView
         android:id="@+id/E34"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/E33"
         app:layout_constraintTop_toBottomOf="@+id/E24"
         app:layout_constraintWidth="50dp" />
 
+    <TextView
+        android:id="@+id/E35"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/E34"
+        app:layout_constraintTop_toBottomOf="@+id/E25"
+        app:layout_constraintWidth="50dp" />
+
     <!--Row 4-->
     <TextView
-        android:id="@+id/E42"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:id="@+id/E41"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/E42"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/E31"
+        app:layout_constraintWidth="50dp" />
+
+    <TextView
+        android:id="@+id/E42"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/E43"
         app:layout_constraintHeight="50dp"
         app:layout_constraintTop_toBottomOf="@+id/E32"
@@ -170,12 +285,13 @@
 
     <TextView
         android:id="@+id/E43"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight="50dp"
         app:layout_constraintHorizontal_bias="0.498"
@@ -185,28 +301,60 @@
 
     <TextView
         android:id="@+id/E44"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/E43"
         app:layout_constraintTop_toBottomOf="@+id/E34"
         app:layout_constraintWidth="50dp" />
 
+    <TextView
+        android:id="@+id/E45"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/E44"
+        app:layout_constraintTop_toBottomOf="@+id/E35"
+        app:layout_constraintWidth="50dp" />
+
     <!--Row 5-->
     <TextView
-        android:id="@+id/E52"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:id="@+id/E51"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/E52"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/E41"
+        app:layout_constraintWidth="50dp" />
+
+    <TextView
+        android:id="@+id/E52"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/E53"
         app:layout_constraintHeight="50dp"
         app:layout_constraintTop_toBottomOf="@+id/E42"
@@ -214,12 +362,13 @@
 
     <TextView
         android:id="@+id/E53"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight="50dp"
         app:layout_constraintHorizontal_bias="0.498"
@@ -229,28 +378,60 @@
 
     <TextView
         android:id="@+id/E54"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/E53"
         app:layout_constraintTop_toBottomOf="@+id/E44"
         app:layout_constraintWidth="50dp" />
 
+    <TextView
+        android:id="@+id/E55"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/E54"
+        app:layout_constraintTop_toBottomOf="@+id/E45"
+        app:layout_constraintWidth="50dp" />
+
     <!--Row 6-->
     <TextView
-        android:id="@+id/E62"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:id="@+id/E61"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/E62"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/E51"
+        app:layout_constraintWidth="50dp" />
+
+    <TextView
+        android:id="@+id/E62"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@+id/E63"
         app:layout_constraintHeight="50dp"
         app:layout_constraintTop_toBottomOf="@+id/E52"
@@ -258,12 +439,13 @@
 
     <TextView
         android:id="@+id/E63"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight="50dp"
         app:layout_constraintHorizontal_bias="0.498"
@@ -273,16 +455,32 @@
 
     <TextView
         android:id="@+id/E64"
-        android:layout_width="75dp"        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="sans-serif"
         android:gravity="center"
-          android:textSize="32sp"
+        android:textSize="32sp"
         app:layout_constraintHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/E63"
         app:layout_constraintTop_toBottomOf="@+id/E54"
+        app:layout_constraintWidth="50dp" />
+
+    <TextView
+        android:id="@+id/E65"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textSize="32sp"
+        app:layout_constraintHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/E64"
+        app:layout_constraintTop_toBottomOf="@+id/E55"
         app:layout_constraintWidth="50dp" />
 
     <LinearLayout
@@ -688,7 +886,7 @@
         android:id="@+id/japanese_back_button"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="2dp"
         android:background="@drawable/grey_tile"
         android:padding="0dp"
         android:text="⇱"
