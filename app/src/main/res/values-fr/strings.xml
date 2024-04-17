@@ -15,5 +15,6 @@
     <string name="newGame">Nouvelle Partie</string>
     <string name="K41">Essayer</string>
     <string name="rules">RÈGLES</string>
+    <string name="french_option">France</string>
 
 </resources>

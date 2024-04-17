@@ -5,8 +5,8 @@
     <string name="settings">ゲーム設定</string>
     <string name="menu_title">行き先</string>
     <string name="english_option">英語</string>
-    <string name="spanish_option">スペイン</string>
-    <string name="japanese_option">日本</string>
+    <string name="spanish_option">スペイン語</string>
+    <string name="japanese_option">日本語</string>
     <string name="vietnamese_option">ベトナム</string>
     <string name="quadrupleWordle">難しいモード</string>
     <string name="english_page_title">WORDLE</string>
@@ -15,5 +15,6 @@
     <string name="newGame">ニューゲーム!</string>
     <string name="K41">入る</string>
     <string name="rules">ルール</string>
+    <string name="french_option">フランス語</string>
 
 </resources>

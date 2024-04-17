@@ -50,16 +50,16 @@ public class Japanese extends AppCompatActivity {
     // Since the most common length of words in Japanese are 3 syllables, we will set this game to three boxes
 
     private static final HashMap<String, String> hiraganaChart = new HashMap<String, String>() {{
-        put("あ", "a"); put("a", "あ"); put("い", "i"); put("i", "い"); put("う", "u"); put("u", "う"); put("え", "e"); put("e", "え"); put("お", "o"); put("o", "お");
+        put("あ", "a");  put("a", "あ");  put("い", "i");  put("i", "い");  put("う", "u");  put("u", "う");  put("え", "e");  put("e", "え");  put("お", "o");  put("o", "お");
         put("か", "ka"); put("ka", "か"); put("き", "ki"); put("ki", "き"); put("く", "ku"); put("ku", "く"); put("け", "ke"); put("ke", "け"); put("こ", "ko"); put("ko", "こ");
-        put("さ", "sa"); put("sa", "さ"); put("し", "shi"); put("shi", "し"); put("す", "su"); put("su", "す"); put("せ", "se"); put("se", "せ"); put("そ", "so"); put("so", "そ");
-        put("た", "ta"); put("ta", "た"); put("ち", "chi"); put("chi", "ち"); put("つ", "tsu"); put("tsu", "つ"); put("て", "te"); put("te", "て"); put("と", "to"); put("to", "と");
+        put("さ", "sa"); put("sa", "さ"); put("し","shi"); put("shi","し"); put("す", "su"); put("su", "す"); put("せ", "se"); put("se", "せ"); put("そ", "so"); put("so", "そ");
+        put("た", "ta"); put("ta", "た"); put("ち","chi"); put("chi","ち"); put("つ","tsu"); put("tsu","つ"); put("て", "te"); put("te", "て"); put("と", "to"); put("to", "と");
         put("な", "na"); put("na", "な"); put("に", "ni"); put("ni", "に"); put("ぬ", "nu"); put("nu", "ぬ"); put("ね", "ne"); put("ne", "ね"); put("の", "no"); put("no", "の");
         put("は", "ha"); put("ha", "は"); put("ひ", "hi"); put("hi", "ひ"); put("ふ", "hu"); put("hu", "ふ"); put("へ", "he"); put("he", "へ"); put("ほ", "ho"); put("ho", "ほ");
         put("ま", "ma"); put("ma", "ま"); put("み", "mi"); put("mi", "み"); put("む", "mu"); put("mu", "む"); put("め", "me"); put("me", "め"); put("も", "mo"); put("mo", "も");
         put("や", "ya"); put("ya", "や"); put("ゆ", "yu"); put("yu", "ゆ"); put("よ", "yo"); put("yo", "よ");
         put("ら", "ra"); put("ra", "ら"); put("り", "ri"); put("ri", "り"); put("る", "ru"); put("ru", "る"); put("れ", "re"); put("re", "れ"); put("ろ", "ro"); put("ro", "ろ");
-        put("わ", "wa"); put("wa", "わ"); put("を", "wo"); put("wo", "を"); put("ん", "n"); put("n", "ん");
+        put("わ", "wa"); put("wa", "わ"); put("を", "wo"); put("wo", "を"); put("ん",  "n"); put("nn", "ん");
 
         put("が", "ga"); put("ga", "が"); put("ぎ", "gi"); put("gi", "ぎ"); put("ぐ", "gu"); put("gu", "ぐ"); put("げ", "ge"); put("ge", "げ"); put("ご", "go"); put("go", "ご");
         put("ざ", "za"); put("za", "ざ"); put("じ", "zi"); put("zi", "じ"); put("ず", "zu"); put("zu", "ず"); put("ぜ", "ze"); put("ze", "ぜ"); put("ぞ", "zo"); put("zo", "ぞ");
@@ -74,7 +74,7 @@ public class Japanese extends AppCompatActivity {
 
     // Japanese also has this weird system where adding small つ
     // in front of another kana makes the consonant part sound longer.
-    // So っ(small tsu) + か (ka) = っか (kka)
+    // So っ (small tsu) + か (ka) = っか (kka)
     private static void addSmallTsu() {
         String neededConsonants = "kstnhmyrwgzdbp";
         String neededVowels = "aeiou";
@@ -87,12 +87,12 @@ public class Japanese extends AppCompatActivity {
         }}
     }
 
-    // This method converts romanji words up to 5 letters long to hiragana characters
+    // This method converts romanji words to hiragana characters
     private static String convertWord(String romanji) {
         if (hiraganaChart.containsKey(romanji)) return hiraganaChart.get(romanji);
 
         StringBuilder kanaVersion = new StringBuilder();
-        for (int i = 0; i < 3; i++) {
+        for (int i = Math.min(2, romanji.length() - 1); i >= 0; i--) {
             String currentScan = romanji.substring(0, i + 1);
             if (hiraganaChart.containsKey(currentScan)) {
                 kanaVersion.append(hiraganaChart.get(currentScan));
@@ -101,7 +101,14 @@ public class Japanese extends AppCompatActivity {
             }
         }
 
-        return kanaVersion.toString();
+        String conversionResult = kanaVersion.toString(), englishLetters = "abcdefghijklmnopqrstuvwxyz";
+        for (int i = 0; i < conversionResult.length(); i++) {
+            if (englishLetters.contains(String.valueOf(conversionResult.charAt(i)))) {
+                return "error";
+            }
+        }
+
+        return conversionResult;
     }
 
     private static String convertBack(String kana) {
@@ -133,7 +140,7 @@ public class Japanese extends AppCompatActivity {
 
     private static String[] triedWords = {"", "", "", "", "", "", ""};
     private static String chosenWord, kanaWord = "!";
-    private static int current_row = 0, current_columns = 0, start_column = 1, end_column = 3;
+    private static int current_row = 0, current_columns = 0, start_column = 0, end_column = 5;
     final public static int[][] grid_id = {
             {R.id.E11, R.id.E12, R.id.E13, R.id.E14, R.id.E15},
             {R.id.E21, R.id.E22, R.id.E23, R.id.E24, R.id.E25},
@@ -144,13 +151,27 @@ public class Japanese extends AppCompatActivity {
     };
 
     public void createGrid() {
+        switch (kanaWord.length()) {
+            case 5: start_column = 0; end_column = 4; break;
+            case 4: start_column = 0; end_column = 3; break;
+            case 3: start_column = 1; end_column = 3; break;
+            case 2: start_column = 2; end_column = 3; break;
+        }
+
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 5; j++) {
                 TextView grid_tile = findViewById(grid_id[i][j]);
-                grid_tile.setText("");
-                grid_tile.setTextColor(getResources().getColor(R.color.black));
-                grid_tile.setBackgroundResource(R.drawable.border);
-            }}
+                if (j < start_column || j > end_column) {
+                    grid_tile.setVisibility(View.GONE);
+                }
+                else {
+                    grid_tile.setVisibility(View.VISIBLE);
+                    grid_tile.setText("");
+                    grid_tile.setTextColor(getResources().getColor(R.color.black));
+                    grid_tile.setBackgroundResource(R.drawable.border);
+                }
+            }
+        }
     }
 
     /*╗  ██╗███████╗██╗   ██╗██████╗  █████╗  █████╗ ██████╗ ██████╗
@@ -160,6 +181,7 @@ public class Japanese extends AppCompatActivity {
     ██║ ╚██╗███████╗   ██║   ██████╦╝╚█████╔╝██║  ██║██║  ██║██████╔╝
     ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═════╝  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚════*/
 
+    // This 2d Array stores every id of the button in the keyboard
     final public static int[][] keyboard_id = {
             {R.id.Q, R.id.W, R.id.E, R.id.R, R.id.T, R.id.Y, R.id.U},
             {R.id.I, R.id.O, R.id.P, R.id.A, R.id.S, R.id.D, R.id.F},
@@ -167,8 +189,7 @@ public class Japanese extends AppCompatActivity {
             {R.id.Enter, R.id.C, R.id.V, R.id.B, R.id.N, R.id.M, R.id.Delete},
     };
 
-    // final public static String keyboard_position = "QWERTYUIOPASDFGHJKLZX1CVBNM2";
-
+    // This method creates a keyboard and sets the method for each individual buttons
     public void createKeyboard() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 7; j++) {
@@ -198,23 +219,32 @@ public class Japanese extends AppCompatActivity {
     ██║ ╚██╗███████╗   ██║       ╚█████╔╝╚█████╔╝██║ ╚███║   ██║   ██║  ██║╚█████╔╝███████╗██████╔╝
     ╚═╝  ╚═╝╚══════╝   ╚═╝        ╚════╝  ╚════╝ ╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚════*/
 
+    // This method is run when a letter button is pressed
     public void keyPressed(String key) {
-        if (current_columns >= 3) {current_columns = 3; return;}
+        // Doesn't run if the whole boxes are filled
+        if (current_columns > end_column) {current_columns = end_column; return;}
+
+        // Finds the tile to add the next character
         TextView tile = findViewById(grid_id[current_row][current_columns]);
+
+        // Searches for what is already in the tile (to convert to Kana)
         String currentTextInRow = (tile.getText().toString() + key).toLowerCase();
 
+        // ん case (where the user must press n twice to get this kana)
         if ((currentTextInRow + key).contains("nn")) {
             tile.setText(hiraganaChart.get("n"));
             current_columns++;
             return;
         }
 
+        // Checks if there is a matching kana for the words in the list
         if (hiraganaChart.containsKey(currentTextInRow) && !key.equalsIgnoreCase("n")) {
             String kana = hiraganaChart.get(currentTextInRow);
             assert kana != null;
             if (kana.length() > 1) {
                 tile.setText(String.valueOf(kana.charAt(0)));
                 current_columns++;
+                if (current_columns == end_column) return;
                 tile = findViewById(grid_id[current_row][current_columns]);
                 tile.setText(String.valueOf(kana.charAt(1)));
             }
@@ -236,7 +266,7 @@ public class Japanese extends AppCompatActivity {
 
         // Check if there are enough letters
         if (current_columns < end_column) {
-            showDialog("There are not enough letters. Please enter a 5 letter word.");
+            showDialog("There are not enough letters. Please enter a " + kanaWord.length() + " kana word.");
             return;
         }
 
@@ -277,6 +307,7 @@ public class Japanese extends AppCompatActivity {
     }
 
     public void deletePressed() {
+        // if (current_columns == end_column) current_columns--;
         TextView tile = findViewById(grid_id[current_row][current_columns]);
         String currentLetters = tile.getText().toString();
         if (currentLetters.length() > 1) {
@@ -298,7 +329,7 @@ public class Japanese extends AppCompatActivity {
 
     private String constructWord() {
         StringBuilder input_word_finder = new StringBuilder();
-        for (int i = 0; i < kanaWord.length(); i++) {
+        for (int i = start_column; i < kanaWord.length(); i++) {
             TextView tile = findViewById(grid_id[current_row][i]);
             char letter = tile.getText().charAt(0);
             input_word_finder.append(letter);
@@ -402,6 +433,12 @@ public class Japanese extends AppCompatActivity {
     ██████╔╝██║  ██║██║  ╚██╔╝  ███████╗██║  ██║  ╚█████╔╝╚█████╔╝██████╔╝███████╗
     ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚════╝  ╚════╝ ╚═════╝ ╚═════*/
     public void newGame() {
+        // Chose new word
+        do {
+            chosenWord = wordList.get((int)(Math.random() * wordList.size()));
+            kanaWord = convertWord(chosenWord);
+        } while (kanaWord.length() > 5);
+
         // Create keyboard again
         createKeyboard();
 
@@ -409,17 +446,11 @@ public class Japanese extends AppCompatActivity {
         current_columns = 0; current_row = 0;
         createGrid();
 
-        // Chose new word
-        while (kanaWord.length() != 3) {
-            chosenWord = wordList.get((int)(Math.random() * wordList.size()));
-            kanaWord = convertWord(chosenWord);
-        }
-
         // Resets gameOver boolean
         gameOver = false;
 
         // Log new word for debugging ;)
-        Log.d("CHEATER", "CHOSEN WORD : " + chosenWord);
+        Log.d("CHEATER", "CHOSEN WORD : " + kanaWord);
 
         for (int i = 0; i < 10; i++) Log.d("CHEATER", "GOOFY AAA " + i + " : " + wordList.get(i));
     }
@@ -453,7 +484,7 @@ public class Japanese extends AppCompatActivity {
         addSmallTsu();
 
         //createHiraganaChart();
-        Log.d("CHEATER", "CHOSEN WORD : " + convertWord("akita"));
+        Log.d("CHEATER", "CHOSEN WORD : " + convertWord(chosenWord));
     }
 
     private static Vector<String> wordList = new Vector<>();

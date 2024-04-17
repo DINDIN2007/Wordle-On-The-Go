@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class Menu extends AppCompatActivity {
 
-    Button english_Option, japanese_Option;
+    Button english_Option, japanese_Option, spanish_Option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,12 @@ public class Menu extends AppCompatActivity {
         japanese_Option.setOnClickListener(v -> {
             Intent japanesePage = Japanese.makeIntent(Menu.this);
             startActivity(japanesePage);
+        });
+
+        spanish_Option = (Button)findViewById(R.id.Spanish);
+        spanish_Option.setOnClickListener(v -> {
+            Intent spanishPage = Spanish.makeIntent(Menu.this);
+            startActivity(spanishPage);
         });
     }
 
