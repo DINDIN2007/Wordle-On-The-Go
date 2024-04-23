@@ -1,3 +1,4 @@
+// DINH VIET LUONG - April 22, 2024
 package com.example.wordleonthego;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,11 @@ public class French extends AppCompatActivity {
     ╚██████╔╝██║  ██║██║██████╔╝    ╚██╔╝  ██║  ██║██║  ██║██║██║  ██║██████╦╝███████╗███████╗██████╔╝
      ╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝      ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚════*/
 
+    /* This section deals with creating the grid of textview for the game interface
+       current_row and current_columns keep track of the current textview to modify (as a coordinate)
+       grid_id contains the id's of the xml textview in the same arrangement in rows and columns
+       createGrid() resets the textviews */
+
     public static int current_row = 0, current_columns = 0;
 
     // Contains all the ids of the textview labels of the 5 x 6 game-grid
@@ -62,6 +68,12 @@ public class French extends AppCompatActivity {
     ██║ ╚██╗███████╗   ██║   ██████╦╝╚█████╔╝██║  ██║██║  ██║██████╔╝
     ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═════╝  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚════*/
 
+    /* This section deals with the creation and storing the values of the keyboard.
+       keyboard_id serves as an array that contains all the id of the xml buttons in activity_spanish.xml
+       keyboard_color keeps track of which color the keys are supposed to be so that they don't change unnecessarily
+           ex. Green Keys won't change to Yellow Keys
+       keyboard_position keeps track of the index of all the keys that can change color
+       createKeyboard() essentially resets the keys and gives them separate methods to execute upon being clicked */
     final public static int[][] keyboard_id = {
             {R.id.Q, R.id.W, R.id.E, R.id.R, R.id.T, R.id.Y, R.id.U},
             {R.id.I, R.id.O, R.id.P, R.id.A, R.id.S, R.id.D, R.id.F},
@@ -117,6 +129,12 @@ public class French extends AppCompatActivity {
     ██╔═██╗ ██╔══╝    ╚██╔╝      ██║  ██╗██║  ██║██║╚████║   ██║   ██╔══██╗██║  ██║██║      ╚═══██╗
     ██║ ╚██╗███████╗   ██║       ╚█████╔╝╚█████╔╝██║ ╚███║   ██║   ██║  ██║╚█████╔╝███████╗██████╔╝
     ╚═╝  ╚═╝╚══════╝   ╚═╝        ╚════╝  ╚════╝ ╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚════*/
+
+    /* This section contains the methods that button call upon when pressed (in the createKeyboard() method)
+       keyPressed() adds a letter to the currentRow
+       enterPressed() checks the letters in a row, changes their color (green, yellow or gray) and skips a row
+         --> entrePressed can also detect when the game ends or if the word is valid
+       deletePressed() functions the same way as keyPressed(), but it deletes one column instead */
 
     // Adds the next letter to the current row
     public void keyPressed(String key) {
@@ -218,8 +236,13 @@ public class French extends AppCompatActivity {
     ██║██║ ╚███║  ╚██╔╝  ██║  ██║███████╗██║██████╔╝      ╚██╔╝  ██║  ██║███████╗╚██████╔╝███████╗██████╔╝
     ╚═╝╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝╚═════╝        ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚════*/
 
+    /* This section deals with showing the user a message panel if they :
+        - Didn't enter enough characters, a valid word or a word they haven't tried before
+       At the end of the game, this message panel displays :
+        - A new game button, reveals the right word, and some statistics */
+
     private static HashMap<String, Integer> statistic = new HashMap<String, Integer>(){{
-        put("wins", 0); put("loses", 0); put("currentStreak", 0);
+        put("wins", 0); put("loses", 0); put("currentStreak", 0); put("maxStreak", 0);
     }};
 
     public void showDialog(String error) {
@@ -235,16 +258,27 @@ public class French extends AppCompatActivity {
         LinearLayout secondRow = (dialog.findViewById(R.id.secondLayer));
 
         if (gameOver) {
+            // Shows the new game buttons
             newGameButton.setVisibility(View.VISIBLE);
             newGameButton.setOnClickListener(v -> newGame());
 
             int total = statistic.get("wins") + statistic.get("loses");
             int percentWin = (int)((statistic.get("wins") / (total * 1.0)) * 100);
+            int maxStreak = Math.max(statistic.get("currentStreak"), statistic.get("maxStreak"));
 
+            // Number of Games Played
             ((TextView)(dialog.findViewById(R.id.playedNumber))).setText(String.valueOf(total));
+
+            // Win Percentage
             ((TextView)(dialog.findViewById(R.id.winPercentageNumber))).setText(String.valueOf(percentWin));
+
+            // Current Streak
             ((TextView)(dialog.findViewById(R.id.currentStreakNumber))).setText(String.valueOf(statistic.get("currentStreak")));
 
+            // Max Streak
+            ((TextView)(dialog.findViewById(R.id.maxStreakNumber))).setText(String.valueOf(statistic.get("maxStreak")));
+
+            // Shows the Statistics
             firstRow.setVisibility(View.VISIBLE);
             secondRow.setVisibility(View.VISIBLE);
         }
@@ -263,6 +297,12 @@ public class French extends AppCompatActivity {
     ██╔══██╗██║  ██║  ████╔═████║   ██║  ██╗██╔══██║██╔══╝  ██║  ██╗██╔═██╗
     ██║  ██║╚█████╔╝  ╚██╔╝ ╚██╔╝   ╚█████╔╝██║  ██║███████╗╚█████╔╝██║ ╚██╗
     ╚═╝  ╚═╝ ╚════╝    ╚═╝   ╚═╝     ╚════╝ ╚═╝  ╚═╝╚══════╝ ╚════╝ ╚═╝  ╚*/
+
+    /* This section deals with the game mechanics that are going to be used in enterPressed()
+       constructWord() finds the letter in each column of the currentRow and outputs the whole word
+       wordHasBeenTried() checks if the words have already been tried in this game
+       checkGreenTiles() turns every letter in the correct position to green
+       checkYellowTiles() turns every letter that is in the word, but in the wrong position to yellow */
 
     public String constructWord() {
         StringBuilder input_word_finder = new StringBuilder();
@@ -374,6 +414,8 @@ public class French extends AppCompatActivity {
     ██████╔╝██║  ██║██║  ╚██╔╝  ███████╗██║  ██║  ╚█████╔╝╚█████╔╝██████╔╝███████╗
     ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚════╝  ╚════╝ ╚═════╝ ╚═════*/
 
+    // This section boots up the game and runs the needed methods from above
+
     public void newGame() {
         // Resets tried words
         Arrays.fill(triedWords, "");
@@ -425,6 +467,12 @@ public class French extends AppCompatActivity {
      ████╔═████║ ██║  ██║██╔══██╗██║  ██║  ██║     ██║ ╚═══██╗   ██║
      ╚██╔╝ ╚██╔╝ ╚█████╔╝██║  ██║██████╔╝  ███████╗██║██████╔╝   ██║
       ╚═╝   ╚═╝   ╚════╝ ╚═╝  ╚═╝╚═════╝   ╚══════╝╚═╝╚═════╝    ╚*/
+
+    /* This section contains all the containers that are needed in most methods above.
+       loadFiles() finds the raw txt file inside the res/raw folder
+       and extracts the words to put in Vector wordList
+       Since txt files don't support accents, the accents in the txt had to be changed to numbers
+       addFrenchAccents() converts those words back to their original forms*/
 
     public static String[] triedWords = {"", "", "", "", "", "", ""};
     public String chosenWord;

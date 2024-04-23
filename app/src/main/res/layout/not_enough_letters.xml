@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:background="@drawable/grey_tile"
         android:gravity="center"
-        android:text="TextView"
+        android:text="GAME OVER, THE WORD WAS HEBEN"
         android:padding="10dp"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -54,21 +54,18 @@
         android:id="@+id/firstLayer"
         android:layout_width="409dp"
         android:layout_height="85dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:visibility="gone"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newGame">
 
         <TextView
             android:id="@+id/playedNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
             android:gravity="center"
-            android:padding="20dp"
             android:text="54"
             android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,11 +75,9 @@
 
         <TextView
             android:id="@+id/winPercentageNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
             android:gravity="center"
-            android:padding="20dp"
             android:paddingBottom="0dp"
             android:text="93"
             android:textSize="40sp"
@@ -93,11 +88,22 @@
 
         <TextView
             android:id="@+id/currentStreakNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
             android:gravity="center"
-            android:padding="20dp"
+            android:paddingBottom="0dp"
+            android:text="13"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/newGame" />
+
+        <TextView
+            android:id="@+id/maxStreakNumber"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:paddingBottom="0dp"
             android:text="13"
             android:textSize="40sp"
@@ -111,21 +117,19 @@
     <LinearLayout
         android:id="@+id/secondLayer"
         android:layout_width="409dp"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_marginTop="4dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:visibility="gone"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstLayer">
 
         <TextView
             android:id="@+id/played"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="20dp"
             android:text="@string/gamesPlayed"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -135,11 +139,9 @@
 
         <TextView
             android:id="@+id/winPercentage"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
             android:gravity="center"
-            android:padding="20dp"
             android:text="@string/winPercentage"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -149,11 +151,22 @@
 
         <TextView
             android:id="@+id/currentStreak"
-            android:layout_width="120dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="20dp"
             android:text="@string/currentStreak"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/newGame" />
+
+        <TextView
+            android:id="@+id/maxStreak"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/maxStreak"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
