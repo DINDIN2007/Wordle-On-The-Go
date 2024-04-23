@@ -15,7 +15,7 @@
     <string name="quadrupleWordle">Hard Mode</string>
 
     <!--English Page-->
-    <string name="english_page_title">WORDLE</string>
+    <string name="english_page_title" translatable="false">WORDLE</string>
     <string name="newGame">New Game</string>
 
     <!--Keyboard-->
@@ -50,4 +50,20 @@
     <string name="K48" translatable="false">Ñ</string>
     <string name="K49" translatable="false">`</string>
     <string name="rules">RULES</string>
+    <string name="rule_page_title">How To Play</string>
+    <string name="rules_page_subHeading">Guess the Wordle in 6 tries</string>
+    <string name="rules_page_rule1">• Each guess must be a valid 5-letter word.</string>
+    <string name="languageOptions">Language Options</string>
+    <string name="rules_page_rule2">• The color of the tiles will change to show how close your guess was to the word.</string>
+    <string name="rules_page_example">Examples</string>
+    <string name="rules_page_ex1">W is in the word and in the correct spot.</string>
+    <string name="rules_page_ex2">I is in the word but in the wrong spot.</string>
+    <string name="rules_page_ex3">U is not in the word in any spot.</string>
+    <string name="B1">W</string>
+    <string name="B2">E</string>
+    <string name="B3">A</string>
+    <string name="B4">R</string>
+    <string name="B5">Y</string>
+    <string name="K50" translatable="false">É</string>
+    <string name="K51" translatable="false">^</string>
 </resources>

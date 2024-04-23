@@ -20,7 +20,7 @@ import android.widget.ImageView;
 @SuppressLint("ClickableViewAccessibility")
 
 public class MainActivity extends AppCompatActivity {
-    Button start;
+    Button start, rules, settings;
     Animation scaleUp, scaleDown;
 
     @Override
@@ -40,6 +40,18 @@ public class MainActivity extends AppCompatActivity {
             Intent menuPage = new Intent(MainActivity.this, Menu.class);
             startActivity(menuPage);
             return true;
+        });
+
+        rules = (Button)findViewById(R.id.rules_buttons);
+        rules.setOnClickListener(v -> {
+            Intent rulePage = RulePage.makeIntent(MainActivity.this);
+            startActivity(rulePage);
+        });
+
+        settings = (Button)findViewById(R.id.setting_button);
+        settings.setOnClickListener(v -> {
+            Intent settingPage = Settings.makeIntent(MainActivity.this);
+            startActivity(settingPage);
         });
     }
 }

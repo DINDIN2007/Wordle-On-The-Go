@@ -5,16 +5,28 @@
     <string name="start_game">JOUER</string>
     <string name="settings">PARAMÈTRE</string>
     <string name="menu_title">DESTINATIONS</string>
-    <string name="english_option">Anglais Standard</string>
+    <string name="english_option">Anglais</string>
     <string name="spanish_option">Espagne</string>
     <string name="japanese_option">Japon</string>
     <string name="vietnamese_option">Vietnam</string>
     <string name="quadrupleWordle">Mode Difficile</string>
 
-    <string name="english_page_title">WORDLE</string>
     <string name="newGame">Nouvelle Partie</string>
     <string name="K41">Essayer</string>
     <string name="rules">RÈGLES</string>
     <string name="french_option">France</string>
-
+    <string name="rule_page_title">Comment Jouer</string>
+    <string name="rules_page_subHeading">Deviner le Wordle en 6 essais</string>
+    <string name="rules_page_rule1">• Chaque essaie doit être un mot valide de 5 lettres.</string>
+    <string name="languageOptions">Options de Langue</string>
+    <string name="rules_page_rule2">• À chaque essai, les lettres du mot que vous avez proposé changeront de couleur en fonction de à quel point vous êtes proche de le trouver.</string>
+    <string name="rules_page_example">Examples</string>
+    <string name="rules_page_ex1">La lettre F est dans le mot, à la bonne place.</string>
+    <string name="rules_page_ex2">"La lettre C est dans le mot, mais pas à la bonne place.  "</string>
+    <string name="rules_page_ex3">La lettre R n\'est pas dans le mot.</string>
+    <string name="B1">F</string>
+    <string name="B2">R</string>
+    <string name="B3">U</string>
+    <string name="B4">I</string>
+    <string name="B5">T</string>
 </resources>

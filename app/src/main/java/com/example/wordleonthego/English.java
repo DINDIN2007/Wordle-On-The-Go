@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 public class English extends AppCompatActivity {
     /*╗       ██╗ █████╗ ██████╗ ██████╗   ██╗     ██╗ ██████╗████████╗
     ██║  ██╗  ██║██╔══██╗██╔══██╗██╔══██╗  ██║     ██║██╔════╝╚══██╔══╝
@@ -148,6 +150,7 @@ public class English extends AppCompatActivity {
             // Execute Ending Code
             gameOver = true;
             showDialog("GAME OVER, THE WORD WAS " + chosenWord);
+            statistic.put("loses", statistic.get("loses") + 1);
         }
         // Proceed to next row
         else {
@@ -170,6 +173,10 @@ public class English extends AppCompatActivity {
     ██║██║ ╚███║  ╚██╔╝  ██║  ██║███████╗██║██████╔╝      ╚██╔╝  ██║  ██║███████╗╚██████╔╝███████╗██████╔╝
     ╚═╝╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝╚═════╝        ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚════*/
 
+    private static HashMap<String, Integer> statistic = new HashMap<String, Integer>(){{
+       put("wins", 0); put("loses", 0);
+    }};
+
     public void showDialog(String error) {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.not_enough_letters);
@@ -177,12 +184,20 @@ public class English extends AppCompatActivity {
         TextView message = (dialog.findViewById(R.id.alert));
         message.setText(error);
 
+        TextView score = (dialog.findViewById(R.id.scoreCounter));
+        String note = "Wins : " + statistic.get("wins") + " | Loses : " + statistic.get("loses");
+        score.setText(note);
+
         Button newGameButton = dialog.findViewById(R.id.newGame);
         if (gameOver) {
             newGameButton.setVisibility(View.VISIBLE);
             newGameButton.setOnClickListener(v -> newGame());
+            score.setVisibility(View.VISIBLE);
         }
-        else newGameButton.setVisibility(View.GONE);
+        else {
+            newGameButton.setVisibility(View.GONE);
+            score.setVisibility(View.GONE);
+        }
 
         dialog.show();
     }
@@ -247,6 +262,7 @@ public class English extends AppCompatActivity {
         if (correctCounter == chosenWord.length()) {
             showDialog("\uD83C\uDF89 Congratulation \uD83C\uDF89\n You found the word");
             gameOver = true;
+            statistic.put("wins", statistic.get("wins") + 1);
         }
         return remaining_letters.toString();
     }

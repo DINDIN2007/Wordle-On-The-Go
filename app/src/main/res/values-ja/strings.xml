@@ -9,12 +9,25 @@
     <string name="japanese_option">日本語</string>
     <string name="vietnamese_option">ベトナム</string>
     <string name="quadrupleWordle">難しいモード</string>
-    <string name="english_page_title">WORDLE</string>
     <string name="homepage">ホームページ</string>
 
     <string name="newGame">ニューゲーム!</string>
     <string name="K41">入る</string>
     <string name="rules">ルール</string>
     <string name="french_option">フランス語</string>
+    <string name="rule_page_title">"本則 "</string>
+    <string name="rules_page_subHeading">６回の試行WORDLEを当てましょう！</string>
+    <string name="rules_page_rule1">• 各試行は有効な単語でなければならない。</string>
+    <string name="languageOptions">言語設定</string>
+    <string name="rules_page_rule2">• タイルの色が変わり、あなたの推測がどれだけその単語に近かったかを示します。</string>
+    <string name="rules_page_example">事例</string>
+    <string name="rules_page_ex1">仮名の「あ」は単語の中にあり、正しい場所にある。</string>
+    <string name="rules_page_ex2">"仮名「く」は単語の中にあるが、間違った場所にある。 "</string>
+    <string name="rules_page_ex3">"かなの「し」は単語にはどこにも入っていない。 "</string>
+    <string name="B1">あ</string>
+    <string name="B2">さ</string>
+    <string name="B3">ご</string>
+    <string name="B4">は</string>
+    <string name="B5">ん</string>
 
 </resources>
