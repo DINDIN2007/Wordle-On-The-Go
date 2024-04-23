@@ -7,6 +7,6 @@ This Android Studio project was made for the Colonel By Highschool course ICS3U 
 > The link to the original game is [here](https://www.nytimes.com/games/wordle/index.html).
 
 ## Extra Information
-Creator of the App : Dinh Viet Luong
-Starting Date : Jan 18, 2024
-Last Update : April 22, 2024
+1. Creator of the App : Dinh Viet Luong
+2. Starting Date : Jan 18, 2024
+3. Last Update : April 22, 2024
