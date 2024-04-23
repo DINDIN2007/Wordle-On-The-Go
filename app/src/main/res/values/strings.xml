@@ -66,4 +66,11 @@
     <string name="B5">Y</string>
     <string name="K50" translatable="false">É</string>
     <string name="K51" translatable="false">^</string>
+    <string name="notEnoughLetters">There are not enough letters. Please enter a 5 letter word.</string>
+    <string name="doesNotContainWord">The dictionary does not contain this word. Please try again.</string>
+    <string name="hasAlreadyBeenTried">The word has already been tried above ! Try something else...</string>
+    <string name="gamesPlayed">Played</string>
+    <string name="winPercentage">Win %</string>
+    <string name="currentStreak">Current Streak</string>
+    <string name="maxStreak">Max Streak</string>
 </resources>

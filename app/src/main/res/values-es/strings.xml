@@ -28,4 +28,11 @@
     <string name="B3">U</string>
     <string name="B4">D</string>
     <string name="B5">A</string>
+    <string name="notEnoughLetters">No hay suficientes letras para una palabra.</string>
+    <string name="doesNotContainWord">La palabra no está en el diccionario.</string>
+    <string name="hasAlreadyBeenTried">La palabra ya ha sido probada anteriormente. Prueba otra cosa...</string>
+    <string name="gamesPlayed">Jugedas</string>
+    <string name="winPercentage">% Victorias</string>
+    <string name="currentStreak">Racha actual</string>
+    <string name="maxStreak">Mejor racha</string>
 </resources>

@@ -29,4 +29,11 @@
     <string name="B3">U</string>
     <string name="B4">I</string>
     <string name="B5">T</string>
+    <string name="notEnoughLetters">Veuillez entrer un mot de 5 lettres</string>
+    <string name="doesNotContainWord">Ce mot n\'est pas dans la liste</string>
+    <string name="hasAlreadyBeenTried">Le mot a déjà été essayé ci-dessus ! Essayez autre chose...</string>
+    <string name="gamesPlayed">Parties</string>
+    <string name="winPercentage">Victoire (%)</string>
+    <string name="currentStreak">"Série actuelle  "</string>
+    <string name="maxStreak">Meilleure série</string>
 </resources>

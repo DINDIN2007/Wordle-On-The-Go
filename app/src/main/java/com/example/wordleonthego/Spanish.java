@@ -12,12 +12,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Vector;
 
 public class Spanish extends AppCompatActivity {
@@ -39,6 +42,8 @@ public class Spanish extends AppCompatActivity {
      ╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝      ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚════*/
 
     public static int current_row = 0, current_columns = 0;
+
+    // Contains all the ids of the textview labels of the 5 x 6 game-grid
     final public static int[][] grid_id = {
             {R.id.E11, R.id.E12, R.id.E13, R.id.E14, R.id.E15},
             {R.id.E21, R.id.E22, R.id.E23, R.id.E24, R.id.E25},
@@ -48,12 +53,14 @@ public class Spanish extends AppCompatActivity {
             {R.id.E61, R.id.E62, R.id.E63, R.id.E64, R.id.E65},
     };
 
+    // Creates the game grid with the textview labels
     public void createGrid() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 5; j++) {
                 TextView grid_tile = findViewById(grid_id[i][j]);
                 grid_tile.setText("");
                 grid_tile.setBackgroundResource(R.drawable.border);
+                grid_tile.setTextColor(Color.BLACK);
             }}
     }
 
@@ -75,6 +82,7 @@ public class Spanish extends AppCompatActivity {
 
     final public static String keyboard_position = "QWERTYUIOPASDFGHJKLZX1CVBNMÑ2";
 
+    // Creates or resets the keyboard by searching for the buttons in the xml files
     public void createKeyboard() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < keyboard_id[i].length; j++) {
@@ -116,6 +124,7 @@ public class Spanish extends AppCompatActivity {
     ██║ ╚██╗███████╗   ██║       ╚█████╔╝╚█████╔╝██║ ╚███║   ██║   ██║  ██║╚█████╔╝███████╗██████╔╝
     ╚═╝  ╚═╝╚══════╝   ╚═╝        ╚════╝  ╚════╝ ╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚════*/
 
+    // Adds the next letter to the current row
     public void keyPressed(String key) {
         if (current_columns == 5) return;
         TextView tile = findViewById(grid_id[current_row][current_columns]);
@@ -123,6 +132,7 @@ public class Spanish extends AppCompatActivity {
         current_columns++;
     }
 
+    // Converts letters to accented form or not accented
     private static String addAccent(char letter) {
         switch(letter) {
             case 'A': return "Á";
@@ -147,7 +157,7 @@ public class Spanish extends AppCompatActivity {
 
         // Check if there are enough letters
         if (current_columns < 5) {
-            showDialog("There are not enough letters. Please enter a 5 letter word.");
+            showDialog(getResources().getString(R.string.notEnoughLetters));
             return;
         }
 
@@ -155,11 +165,11 @@ public class Spanish extends AppCompatActivity {
 
         // Check if current word is valid
         if (!wordList.contains(input_word.toLowerCase())) {
-            showDialog("The dictionary does not contain this word. Please try again.");
+            showDialog(getResources().getString(R.string.doesNotContainWord));
             return;
         }
         if (wordHasBeenTried(input_word)) {
-            showDialog("The word has already been tried above ! Try something else...");
+            showDialog(getResources().getString(R.string.hasAlreadyBeenTried));
             return;
         }
 
@@ -175,6 +185,8 @@ public class Spanish extends AppCompatActivity {
         if (current_row == 5 && !gameOver) {
             // Execute Ending Code
             gameOver = true;
+            statistic.put("loses", statistic.get("loses") + 1);
+            statistic.put("currentStreak", 0);
             showDialog("GAME OVER, THE WORD WAS " + chosenWord);
         }
         // Proceed to next row
@@ -198,6 +210,10 @@ public class Spanish extends AppCompatActivity {
     ██║██║ ╚███║  ╚██╔╝  ██║  ██║███████╗██║██████╔╝      ╚██╔╝  ██║  ██║███████╗╚██████╔╝███████╗██████╔╝
     ╚═╝╚═╝  ╚══╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝╚═════╝        ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚════*/
 
+    private static HashMap<String, Integer> statistic = new HashMap<String, Integer>(){{
+        put("wins", 0); put("loses", 0); put("currentStreak", 0);
+    }};
+
     public void showDialog(String error) {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.not_enough_letters);
@@ -206,11 +222,29 @@ public class Spanish extends AppCompatActivity {
         message.setText(error);
 
         Button newGameButton = dialog.findViewById(R.id.newGame);
+
+        LinearLayout firstRow = (dialog.findViewById(R.id.firstLayer));
+        LinearLayout secondRow = (dialog.findViewById(R.id.secondLayer));
+
         if (gameOver) {
             newGameButton.setVisibility(View.VISIBLE);
             newGameButton.setOnClickListener(v -> newGame());
+
+            int total = statistic.get("wins") + statistic.get("loses");
+            int percentWin = (int)((statistic.get("wins") / (total * 1.0)) * 100);
+
+            ((TextView)(dialog.findViewById(R.id.playedNumber))).setText(String.valueOf(total));
+            ((TextView)(dialog.findViewById(R.id.winPercentageNumber))).setText(String.valueOf(percentWin));
+            ((TextView)(dialog.findViewById(R.id.currentStreakNumber))).setText(String.valueOf(statistic.get("currentStreak")));
+
+            firstRow.setVisibility(View.VISIBLE);
+            secondRow.setVisibility(View.VISIBLE);
         }
-        else newGameButton.setVisibility(View.GONE);
+        else {
+            newGameButton.setVisibility(View.GONE);
+            firstRow.setVisibility(View.GONE);
+            secondRow.setVisibility(View.GONE);
+        }
 
         dialog.show();
     }
@@ -265,6 +299,8 @@ public class Spanish extends AppCompatActivity {
             else remaining_letters.append(chosenWord.charAt(i));
         }
         if (correctCounter == chosenWord.length()) {
+            statistic.put("wins", statistic.get("wins") + 1);
+            statistic.put("currentStreak", statistic.get("wins"));
             showDialog("\uD83C\uDF89 Congratulation \uD83C\uDF89\n You found the word");
             gameOver = true;
         }
@@ -345,7 +381,7 @@ public class Spanish extends AppCompatActivity {
         gameOver = false;
 
         // Resets tried words
-        for (String word : triedWords) word = "";
+        Arrays.fill(triedWords, "");
     }
 
     public static Intent makeIntent(Context context) {

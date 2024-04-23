@@ -29,5 +29,12 @@
     <string name="B3">ご</string>
     <string name="B4">は</string>
     <string name="B5">ん</string>
+    <string name="notEnoughLetters">文字数が足りません。5文字の単語を入力してください。</string>
+    <string name="doesNotContainWord">辞書にこの単語は含まれていません。もう一度お試しください。</string>
+    <string name="hasAlreadyBeenTried">その単語はすでに試されている！他の言葉を試してみよう</string>
+    <string name="gamesPlayed">試合</string>
+    <string name="winPercentage">勝利 (%)</string>
+    <string name="currentStreak">現在の成績</string>
+    <string name="maxStreak">最高の成績</string>
 
 </resources>
