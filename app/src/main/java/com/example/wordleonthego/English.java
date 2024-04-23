@@ -24,15 +24,6 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class English extends AppCompatActivity {
-    /*╗       ██╗ █████╗ ██████╗ ██████╗   ██╗     ██╗ ██████╗████████╗
-    ██║  ██╗  ██║██╔══██╗██╔══██╗██╔══██╗  ██║     ██║██╔════╝╚══██╔══╝
-    ╚██╗████╗██╔╝██║  ██║██████╔╝██║  ██║  ██║     ██║╚█████╗    ██║
-     ████╔═████║ ██║  ██║██╔══██╗██║  ██║  ██║     ██║ ╚═══██╗   ██║
-     ╚██╔╝ ╚██╔╝ ╚█████╔╝██║  ██║██████╔╝  ███████╗██║██████╔╝   ██║
-      ╚═╝   ╚═╝   ╚════╝ ╚═╝  ╚═╝╚═════╝   ╚══════╝╚═╝╚═════╝    ╚*/
-
-    public static String[] triedWords = {"", "", "", "", "", "", ""};
-    public static String chosenWord;
 
     /*█████╗ ██████╗ ██╗██████╗   ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗ ██████╗
     ██╔════╝ ██╔══██╗██║██╔══██╗  ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
@@ -89,6 +80,7 @@ public class English extends AppCompatActivity {
             TextView key = findViewById(keyboard_id[i][j]);
             key.setBackgroundResource(R.drawable.not_selected);
             key.setOnClickListener(v -> {
+                // Finds the matching key and runs the matching method
                 int key_id = v.getId();
                 String key1 = (getResources().getResourceEntryName(key_id));
                 switch (key1) {
@@ -144,6 +136,7 @@ public class English extends AppCompatActivity {
             showDialog(getResources().getString(R.string.doesNotContainWord));
             return;
         }
+
         if (wordHasBeenTried(input_word)) {
             showDialog(getResources().getString(R.string.hasAlreadyBeenTried));
             return;
@@ -388,6 +381,15 @@ public class English extends AppCompatActivity {
         newGame();
     }
 
+    /*╗       ██╗ █████╗ ██████╗ ██████╗   ██╗     ██╗ ██████╗████████╗
+    ██║  ██╗  ██║██╔══██╗██╔══██╗██╔══██╗  ██║     ██║██╔════╝╚══██╔══╝
+    ╚██╗████╗██╔╝██║  ██║██████╔╝██║  ██║  ██║     ██║╚█████╗    ██║
+     ████╔═████║ ██║  ██║██╔══██╗██║  ██║  ██║     ██║ ╚═══██╗   ██║
+     ╚██╔╝ ╚██╔╝ ╚█████╔╝██║  ██║██████╔╝  ███████╗██║██████╔╝   ██║
+      ╚═╝   ╚═╝   ╚════╝ ╚═╝  ╚═╝╚═════╝   ╚══════╝╚═╝╚═════╝    ╚*/
+
+    public static String[] triedWords = {"", "", "", "", "", "", ""};
+    public static String chosenWord;
     private Vector<String> wordList = new Vector<String>();
 
     private void loadFiles() {
